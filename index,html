@@ -1,0 +1,1882 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>РусьСтрой — Дома и бани из бревна и бруса в Новосибирске и Томске</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'PT Sans',sans-serif;font-size:15px;color:#333;background:#fff;overflow-x:hidden}
+a{text-decoration:none;color:inherit;cursor:pointer}
+ul{list-style:none}
+button{font-family:inherit;cursor:pointer}
+input,select,textarea{font-family:inherit}
+:root{
+  --green:#4a7c3f;--green-dark:#2e5a24;--green-light:#eaf2e6;
+  --orange:#d4611b;--orange-dark:#b85015;
+  --gray-bg:#f5f5f3;--gray-border:#ddd;--gray-text:#666;
+  --topbar:#1a1a1a;--footer-bg:#1a1a1a;
+  --shadow:0 2px 12px rgba(0,0,0,.10);--radius:6px;--max:1200px;
+}
+
+/* TOPBAR */
+.topbar{background:var(--topbar);color:#bbb;font-size:13px;border-bottom:2px solid var(--green)}
+.topbar-in{max-width:var(--max);margin:0 auto;padding:7px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.topbar-left,.topbar-right{display:flex;align-items:center;gap:16px}
+.topbar a{color:#bbb;display:flex;align-items:center;gap:5px;transition:color .2s}
+.topbar a:hover{color:#fff}
+.ti{width:20px;height:20px;border-radius:3px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+.ti-ig{background:linear-gradient(135deg,#f9a825,#e91e63,#9c27b0);color:#fff}
+.ti-wa{background:#25D366;color:#fff}
+.ti-ph{background:var(--green);color:#fff}
+.topbar-cta{background:var(--orange);color:#fff!important;padding:5px 13px;border-radius:3px;font-weight:700;font-size:12px}
+.topbar-cta:hover{background:var(--orange-dark)!important}
+
+/* HEADER */
+.header{background:#fff;box-shadow:var(--shadow);position:sticky;top:0;z-index:200}
+.header-in{max-width:var(--max);margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer}
+.logo-mark{width:42px;height:42px;background:var(--green-dark);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-mark svg{width:24px;height:24px;fill:#fff}
+.logo-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--green-dark);line-height:1.1}
+.logo-sub{font-size:10px;color:var(--gray-text);letter-spacing:2px;text-transform:uppercase}
+.nav{display:flex;align-items:center;gap:2px}
+.ni{position:relative}
+.nl{display:flex;align-items:center;gap:4px;padding:8px 12px;font-size:14px;font-weight:700;color:#333;border-radius:4px;border:none;background:none;transition:background .2s,color .2s;white-space:nowrap;cursor:pointer}
+.nl:hover,.ni:hover>.nl{background:var(--green-light);color:var(--green-dark)}
+.na{width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid #aaa;transition:transform .2s}
+.ni:hover .na{transform:rotate(180deg);border-top-color:var(--green)}
+.drop{display:none;position:absolute;top:100%;left:0;background:#fff;box-shadow:0 6px 24px rgba(0,0,0,.14);border-radius:var(--radius);min-width:210px;z-index:300;padding:6px 0;border-top:2px solid var(--green)}
+.ni:hover .drop{display:block}
+.drop a{display:block;padding:9px 18px;font-size:13px;color:#333;transition:background .15s}
+.drop a:hover{background:var(--green-light);color:var(--green-dark)}
+.burger{display:none;flex-direction:column;gap:5px;padding:8px;background:none;border:none}
+.burger span{display:block;width:24px;height:2px;background:#333;border-radius:2px;transition:.3s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mob-nav{display:none;flex-direction:column;background:#fff;border-top:1px solid var(--gray-border);box-shadow:0 4px 12px rgba(0,0,0,.1);position:relative;z-index:100}
+.mob-nav.open{display:flex}
+.mob-nav a{padding:11px 22px;font-size:14px;color:#333;border-bottom:1px solid #f0f0f0;cursor:pointer}
+.mob-nav a:hover{background:var(--green-light)}
+.mob-sub{padding-left:40px!important;font-size:13px!important;color:#666!important;background:#fafafa!important}
+
+/* PAGES */
+.page{display:none}
+.page.active{display:block;animation:fin .3s ease}
+@keyframes fin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* COMMON */
+.mw{max-width:var(--max);margin:0 auto;padding:0 20px}
+.bc{max-width:var(--max);margin:0 auto;padding:14px 20px 4px;font-size:13px;color:var(--gray-text)}
+.bc a{color:var(--green);cursor:pointer}
+.bc a:hover{text-decoration:underline}
+.bc span{margin:0 5px}
+.page-h1{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#222;margin-bottom:24px;text-transform:uppercase;letter-spacing:.5px}
+.sec-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#222;margin-bottom:28px;text-align:center;padding-bottom:14px;position:relative}
+.sec-title::after{content:'';display:block;width:56px;height:3px;background:var(--green);margin:12px auto 0;border-radius:2px}
+.sec-title.light{color:#fff}
+.sec-title.light::after{background:var(--orange)}
+
+/* BUTTONS */
+.btn-or{background:var(--orange);color:#fff;border:none;border-radius:5px;padding:12px 24px;font-size:14px;font-weight:700;cursor:pointer;transition:background .2s;display:inline-block;text-align:center}
+.btn-or:hover{background:var(--orange-dark)}
+.btn-gr{background:var(--green-dark);color:#fff;border:none;border-radius:5px;padding:11px 22px;font-size:14px;font-weight:700;cursor:pointer;transition:background .2s}
+.btn-gr:hover{background:var(--green)}
+.btn-block{display:block;width:100%;text-align:center}
+
+/* FEEDBACK FORM */
+.fb-wrap{padding:50px 0}
+.fb-section{background:var(--green-light);border-radius:10px;padding:36px 32px;display:flex;align-items:center;gap:40px;flex-wrap:wrap}
+.fb-text{flex:1;min-width:200px}
+.fb-text h2{font-family:'Playfair Display',serif;font-size:22px;color:var(--green-dark);margin-bottom:6px}
+.fb-text p{color:var(--gray-text);font-size:14px}
+.fb-form{flex:1;min-width:260px;display:flex;flex-direction:column;gap:11px}
+.fb-form select,.fb-form input{width:100%;padding:11px 14px;border:1px solid var(--gray-border);border-radius:5px;font-size:14px;background:#fff;appearance:none}
+.fb-form select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;cursor:pointer}
+
+/* FOOTER */
+.footer{background:var(--footer-bg);color:#aaa;font-size:13px}
+.footer-top{max-width:var(--max);margin:0 auto;padding:44px 20px 32px;display:grid;grid-template-columns:1.6fr 1fr 1fr 1.1fr;gap:30px}
+.ft-logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:16px;line-height:1.2}
+.ft-logo small{display:block;font-size:10px;font-family:'PT Sans',sans-serif;font-weight:400;color:#666;letter-spacing:2px;text-transform:uppercase;margin-top:3px}
+.ft-row{display:flex;align-items:flex-start;gap:9px;margin-bottom:10px;line-height:1.5;font-size:13px}
+.ft-row a{color:#aaa;transition:color .2s}
+.ft-row a:hover{color:#fff}
+.ft-col h4{color:#fff;font-size:12px;margin-bottom:14px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding-bottom:8px;border-bottom:1px solid #2a2a2a}
+.ft-col a{display:block;color:#aaa;margin-bottom:7px;font-size:13px;transition:color .2s;cursor:pointer}
+.ft-col a:hover{color:#fff}
+.ft-cat{background:#252525;border-radius:8px;padding:20px;text-align:center}
+.ft-cat-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:#fff;display:block;margin-bottom:3px}
+.ft-cat-desc{font-size:12px;color:#777;margin-bottom:16px}
+.footer-bottom{border-top:1px solid #2a2a2a;max-width:var(--max);margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-size:12px;color:#555}
+
+/* =====================
+   HOME
+   ===================== */
+.hero{position:relative;overflow:hidden;height:520px;background:#162c10}
+.hero-track{display:flex;height:100%;transition:transform .55s ease}
+.hero-slide{min-width:100%;height:100%;display:flex;align-items:center;position:relative}
+.hs1{background:linear-gradient(120deg,#162c10 0%,#2e5a24 55%,#4a7c3f 100%)}
+.hs2{background:linear-gradient(120deg,#1c3820 0%,#3a6030 55%,#5a8a4a 100%)}
+.hero-deco{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.hero-deco svg{width:100%;height:100%}
+.hero-content{position:relative;z-index:2;max-width:var(--max);margin:0 auto;padding:0 44px;width:100%}
+.hero-tag{display:inline-block;background:var(--orange);color:#fff;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 13px;border-radius:3px;margin-bottom:18px}
+.hero-title{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:#fff;line-height:1.15;margin-bottom:14px;max-width:620px}
+.hero-sub{font-size:17px;color:rgba(255,255,255,.78);margin-bottom:32px;max-width:520px;line-height:1.65}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.h-btn-main{background:var(--orange);color:#fff;padding:15px 32px;border-radius:5px;font-size:15px;font-weight:700;border:none;cursor:pointer;transition:background .2s}
+.h-btn-main:hover{background:var(--orange-dark)}
+.h-btn-sec{background:transparent;color:#fff;padding:14px 30px;border-radius:5px;font-size:15px;font-weight:700;border:2px solid rgba(255,255,255,.45);cursor:pointer;transition:all .2s}
+.h-btn-sec:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.h-prev,.h-next{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;color:#fff;font-size:18px;transition:background .2s}
+.h-prev:hover,.h-next:hover{background:rgba(255,255,255,.32)}
+.h-prev{left:20px}
+.h-next{right:20px}
+.h-dots{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);display:flex;gap:8px}
+.h-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;transition:background .2s,transform .2s}
+.h-dot.active{background:#fff;transform:scale(1.35)}
+
+/* Stats */
+.stats-bar{background:var(--green-dark)}
+.stats-in{max-width:var(--max);margin:0 auto;padding:20px;display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{text-align:center;padding:10px 0;border-right:1px solid rgba(255,255,255,.12)}
+.stat:last-child{border-right:none}
+.stat-num{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:#fff;display:block;line-height:1}
+.stat-lbl{font-size:12px;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.4px;margin-top:4px;display:block}
+
+/* Pop projects */
+.pop-sect{padding:60px 0 30px}
+.pop-tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.pop-tab{padding:9px 22px;border:2px solid var(--gray-border);border-radius:30px;font-size:14px;font-weight:700;cursor:pointer;color:var(--gray-text);background:#fff;transition:all .2s}
+.pop-tab.active,.pop-tab:hover{background:var(--green-dark);color:#fff;border-color:var(--green-dark)}
+.proj-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.proj-card{background:#fff;border-radius:var(--radius);box-shadow:0 2px 10px rgba(0,0,0,.08);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.proj-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,.14)}
+.proj-img{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:var(--green-dark)}
+.proj-body{padding:14px}
+.proj-name{font-weight:700;font-size:15px;color:#222;margin-bottom:6px}
+.proj-meta{display:flex;gap:12px;font-size:12px;color:var(--gray-text);margin-bottom:7px}
+.proj-desc{font-size:13px;color:#666;line-height:1.5;margin-bottom:9px}
+.proj-price{font-size:13px;color:var(--orange);font-weight:700;margin-bottom:10px}
+.proj-btn{display:block;width:100%;padding:9px;background:var(--green-dark);color:#fff;border:none;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer;transition:background .2s}
+.proj-btn:hover{background:var(--green)}
+
+/* Howto */
+.howto{background:var(--gray-bg);padding:62px 0}
+.howto-sub{text-align:center;color:var(--gray-text);font-size:14px;margin:-18px 0 34px;line-height:1.6}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+.step{text-align:center;padding:0 8px;position:relative}
+.step:not(:last-child)::after{content:'';position:absolute;top:35px;right:-16px;width:32px;height:2px;background:var(--green-light)}
+.step-num{width:70px;height:70px;border-radius:50%;background:#fff;border:3px solid var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--green-dark);box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.step-ico{font-size:28px;margin-bottom:8px}
+.step-name{font-size:14px;font-weight:700;color:#333;line-height:1.4}
+
+/* News */
+.news-sect{padding:62px 0}
+.news-slider-wrap{overflow:hidden;position:relative}
+.news-track{display:flex;gap:20px;transition:transform .4s ease}
+.news-card{min-width:calc(33.333% - 14px);background:#fff;border-radius:var(--radius);box-shadow:0 2px 10px rgba(0,0,0,.07);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.news-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.news-img-ph{height:165px;display:flex;align-items:center;justify-content:center;color:var(--green-dark);font-size:13px;font-weight:700}
+.news-body{padding:16px}
+.news-date{font-size:12px;color:var(--gray-text);margin-bottom:6px}
+.news-title-t{font-size:14px;font-weight:700;color:#222;line-height:1.5;margin-bottom:7px}
+.news-excerpt{font-size:13px;color:#666;line-height:1.5}
+.news-nav{display:flex;justify-content:center;gap:12px;margin-top:22px}
+.news-btn{width:38px;height:38px;border-radius:50%;border:2px solid var(--green);background:#fff;color:var(--green);font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s}
+.news-btn:hover{background:var(--green);color:#fff}
+.news-all{text-align:center;margin-top:22px}
+.news-all a{color:var(--green);font-weight:700;font-size:14px;cursor:pointer}
+.news-all a:hover{text-decoration:underline}
+
+/* Why us */
+.why-sect{background:var(--green-dark);padding:62px 0}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.why-card{background:rgba(255,255,255,.07);border-radius:var(--radius);padding:26px 20px;display:flex;align-items:flex-start;gap:16px;border:1px solid rgba(255,255,255,.1)}
+.why-icon{width:50px;height:50px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:22px}
+.why-title{font-size:16px;font-weight:700;color:#fff;margin-bottom:5px}
+.why-desc{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6}
+
+/* Articles */
+.art-sect{padding:62px 0}
+.art-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.art-card{border:1px solid var(--gray-border);border-radius:var(--radius);padding:18px;cursor:pointer;transition:border-color .2s,box-shadow .2s}
+.art-card:hover{border-color:var(--green);box-shadow:0 4px 14px rgba(0,0,0,.07)}
+.art-title-t{font-size:14px;font-weight:700;color:#222;line-height:1.5;margin-bottom:8px}
+.art-exc{font-size:13px;color:#666;line-height:1.5;margin-bottom:10px}
+.art-more{font-size:13px;color:var(--green);font-weight:700}
+
+/* About strip */
+.about-strip{background:var(--gray-bg);padding:56px 0}
+.about-strip-in{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+.about-strip h2{font-family:'Playfair Display',serif;font-size:24px;color:var(--green-dark);margin-bottom:16px}
+.about-strip p{font-size:14px;line-height:1.85;color:#444;margin-bottom:12px}
+.about-strip ul{margin-bottom:0}
+.about-strip li{padding:5px 0;font-size:14px;color:#444;display:flex;align-items:flex-start;gap:8px}
+.about-strip li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
+.about-img-ph{background:var(--green-light);border-radius:10px;height:340px;display:flex;align-items:center;justify-content:center;font-size:52px;color:var(--green)}
+
+/* =====================
+   CATALOG
+   ===================== */
+.cat-layout{display:grid;grid-template-columns:260px 1fr;gap:28px;align-items:start}
+.filter-box{background:#fff;border:1px solid var(--gray-border);border-radius:var(--radius);padding:22px;position:sticky;top:90px}
+.filter-head{font-size:15px;font-weight:700;color:#222;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--green-light);display:flex;justify-content:space-between;align-items:center}
+.filter-reset{font-size:12px;color:var(--green);cursor:pointer;font-weight:400}
+.filter-reset:hover{text-decoration:underline}
+.filter-group{margin-bottom:18px}
+.fg-title{font-size:12px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:.6px;margin-bottom:9px}
+.filter-group label{display:flex;align-items:center;gap:8px;font-size:14px;color:#444;cursor:pointer;padding:4px 0;line-height:1.4}
+.filter-group label:hover{color:var(--green-dark)}
+.filter-group input[type=checkbox],.filter-group input[type=radio]{width:15px;height:15px;accent-color:var(--green);flex-shrink:0}
+.cat-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px}
+.cat-tabs{display:flex;gap:6px}
+.cat-tab{padding:7px 16px;border:2px solid var(--gray-border);border-radius:30px;font-size:13px;font-weight:700;cursor:pointer;background:#fff;color:var(--gray-text);transition:all .2s}
+.cat-tab.active,.cat-tab:hover{background:var(--green-dark);color:#fff;border-color:var(--green-dark)}
+.cat-count{font-size:13px;color:var(--gray-text)}
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cat-card{background:#fff;border-radius:var(--radius);box-shadow:0 2px 10px rgba(0,0,0,.07);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
+.cat-card:hover{transform:translateY(-4px);box-shadow:0 8px 22px rgba(0,0,0,.13)}
+.cat-img{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px;font-size:13px;font-weight:700;color:var(--green-dark)}
+.cat-body{padding:14px;flex:1;display:flex;flex-direction:column}
+.cat-name{font-weight:700;font-size:15px;color:#222;margin-bottom:7px}
+.cat-meta{display:flex;gap:10px;font-size:12px;color:var(--gray-text);margin-bottom:7px;flex-wrap:wrap}
+.cat-desc{font-size:13px;color:#666;line-height:1.5;flex:1;margin-bottom:9px}
+.cat-price{font-size:13px;font-weight:700;color:var(--orange);margin-bottom:9px}
+.cat-btn{width:100%;padding:9px;background:var(--green-dark);color:#fff;border:none;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer;transition:background .2s}
+.cat-btn:hover{background:var(--green)}
+.cat-seo{margin-top:36px;padding:26px;background:var(--gray-bg);border-radius:var(--radius)}
+.cat-seo h3{font-family:'Playfair Display',serif;font-size:18px;color:var(--green-dark);margin-bottom:10px}
+.cat-seo p{font-size:14px;color:#444;line-height:1.8;margin-bottom:8px}
+.no-results{text-align:center;padding:48px;color:#888;font-size:15px;grid-column:1/-1}
+
+/* =====================
+   PROJECT DETAIL
+   ===================== */
+.proj-layout{display:grid;grid-template-columns:1fr 340px;gap:28px;margin-bottom:34px}
+.gal-tabs-wrap{display:flex;gap:0;margin-bottom:10px;border-bottom:2px solid var(--gray-border)}
+.gal-tab{padding:8px 20px;font-size:14px;font-weight:700;cursor:pointer;color:var(--gray-text);border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .2s}
+.gal-tab.active{color:var(--green-dark);border-bottom-color:var(--green)}
+.slider-wrap{position:relative;overflow:hidden;border-radius:var(--radius);aspect-ratio:4/3}
+.slider-track{display:flex;transition:transform .4s ease}
+.slide{min-width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;font-size:14px;font-weight:700;color:var(--green-dark)}
+.sl-prev,.sl-next{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;background:rgba(255,255,255,.88);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.2);font-size:16px}
+.sl-prev{left:10px}
+.sl-next{right:10px}
+.sl-dots{display:flex;justify-content:center;gap:7px;margin-top:10px}
+.sdot{width:9px;height:9px;border-radius:50%;background:var(--gray-border);cursor:pointer;transition:background .2s}
+.sdot.active{background:var(--green)}
+.sl-thumbs{display:flex;gap:7px;margin-top:10px}
+.thumb{flex:1;aspect-ratio:4/3;border-radius:4px;cursor:pointer;border:2px solid transparent;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--green-dark);transition:border-color .2s}
+.thumb.active{border-color:var(--green)}
+.proj-side{background:var(--gray-bg);border-radius:8px;padding:22px 18px;display:flex;flex-direction:column;gap:15px}
+.det-row{display:flex;align-items:center;gap:13px;padding-bottom:14px;border-bottom:1px solid var(--gray-border)}
+.det-row:last-of-type{border:none;padding:0}
+.det-icon{width:44px;height:44px;background:var(--green-light);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px}
+.det-lbl{font-size:11px;color:var(--gray-text);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.det-val{font-size:20px;font-weight:700;color:#222}
+.det-desc{font-size:13px;color:var(--gray-text);line-height:1.5;margin-top:2px}
+.sel-grp label{display:block;font-size:13px;font-weight:700;color:#444;margin-bottom:6px}
+.sel-grp select{width:100%;padding:9px 12px;border:1px solid var(--gray-border);border-radius:4px;font-size:13px;background:#fff;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;cursor:pointer}
+.price-blk{text-align:center;padding:4px 0}
+.price-lbl{font-size:11px;color:var(--gray-text);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.price-val{font-size:28px;font-weight:700;color:var(--green-dark)}
+.tabs-nav{display:flex;flex-wrap:wrap;border-bottom:2px solid var(--gray-border);margin-bottom:22px}
+.tab-btn{padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;border:none;background:none;color:var(--gray-text);border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .2s}
+.tab-btn.active{color:var(--green-dark);border-bottom-color:var(--green)}
+.tab-btn:hover{color:var(--green-dark)}
+.tab-pane{display:none}
+.tab-pane.active{display:block}
+.compl-list li{padding:7px 0;border-bottom:1px solid #f0f0f0;font-size:14px;display:flex;align-items:flex-start;gap:8px}
+.compl-list li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px}
+.compl-list .head-li{font-weight:700;font-size:15px}
+.compl-list .head-li::before{content:''}
+.wtbl{width:100%;border-collapse:collapse;font-size:14px;margin-bottom:14px}
+.wtbl th{background:var(--green-dark);color:#fff;padding:10px 14px;text-align:left;font-weight:700}
+.wtbl td{padding:10px 14px;border-bottom:1px solid var(--gray-border);vertical-align:top}
+.wtbl tr:nth-child(even) td{background:var(--gray-bg)}
+.warn-box{display:flex;align-items:flex-start;gap:12px;background:#fff8e1;border:1px solid #ffe082;border-radius:6px;padding:14px 16px;margin-bottom:16px;font-size:13px;color:#555;line-height:1.5}
+.ptag{color:var(--orange);font-weight:700}
+/* TABLE SCROLL WRAPPER */
+.wtbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:14px;border-radius:4px}
+.wtbl-wrap .wtbl{margin-bottom:0;min-width:520px}
+
+
+/* =====================
+   GALLERY
+   ===================== */
+.gal-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.gal-fbtn{padding:8px 20px;border:2px solid var(--gray-border);border-radius:30px;font-size:14px;font-weight:700;cursor:pointer;background:#fff;color:var(--gray-text);transition:all .2s}
+.gal-fbtn.active,.gal-fbtn:hover{background:var(--green-dark);color:#fff;border-color:var(--green-dark)}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.gal-item{aspect-ratio:4/3;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;font-size:13px;font-weight:700;transition:opacity .2s;color:var(--green-dark)}
+.gal-item:hover{opacity:.82}
+.show-more{display:block;margin:24px auto 0;padding:12px 32px;background:#fff;border:2px solid var(--green-dark);color:var(--green-dark);border-radius:30px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s}
+.show-more:hover{background:var(--green-dark);color:#fff}
+
+/* =====================
+   SERVICE PAGES
+   ===================== */
+.serv-intro{font-size:15px;line-height:1.85;color:#444;margin-bottom:28px}
+.serv-sec{margin-bottom:32px}
+.serv-sec h2{font-family:'Playfair Display',serif;font-size:20px;color:var(--green-dark);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--green-light)}
+.serv-sec h3{font-size:16px;font-weight:700;color:#333;margin:16px 0 10px}
+.serv-sec p{font-size:14px;line-height:1.85;color:#444;margin-bottom:12px}
+.serv-sec ul{margin-bottom:0}
+.serv-sec li{padding:5px 0;font-size:14px;color:#444;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.serv-sec li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:2px}
+.photo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+.photo-grid.g3{grid-template-columns:repeat(3,1fr)}
+.photo-cell{aspect-ratio:4/3;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px;font-size:12px;color:var(--green-dark);font-weight:700;text-align:center;padding:8px}
+.photo-cell span{font-size:11px;font-weight:400;color:var(--gray-text)}
+.pc-wide{grid-column:span 2}
+.doc-item{display:flex;align-items:center;gap:14px;padding:14px;border:1px solid var(--gray-border);border-radius:var(--radius);margin-bottom:10px;transition:border-color .2s}
+.doc-item:hover{border-color:var(--green)}
+.doc-num{width:34px;height:34px;background:var(--green-dark);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:14px}
+.doc-img{width:72px;height:54px;border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px}
+.doc-name{font-size:14px;font-weight:700;color:#222}
+
+/* =====================
+   ABOUT
+   ===================== */
+.about-layout{display:grid;grid-template-columns:1fr 320px;gap:34px;align-items:start}
+.about-body p{font-size:14px;line-height:1.9;color:#444;margin-bottom:14px}
+.about-body h2{font-family:'Playfair Display',serif;font-size:20px;color:var(--green-dark);margin:22px 0 12px}
+.about-body li{padding:6px 0;font-size:14px;color:#444;display:flex;align-items:flex-start;gap:9px;border-bottom:1px solid #f0f0f0}
+.about-body li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
+.about-sidebar{background:var(--green-dark);color:#fff;border-radius:10px;padding:26px 22px}
+.about-sidebar h3{font-family:'Playfair Display',serif;font-size:18px;margin-bottom:16px}
+.astat{text-align:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.astat:last-child{border:none}
+.astat-num{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:#fff;display:block}
+.astat-lbl{font-size:12px;color:rgba(255,255,255,.65);margin-top:2px;display:block}
+
+/* =====================
+   CONTACTS
+   ===================== */
+.contacts-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.cont-block{background:var(--gray-bg);border-radius:10px;padding:28px}
+.cont-block h2{font-family:'Playfair Display',serif;font-size:20px;color:var(--green-dark);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--green-light)}
+.cont-row{display:flex;align-items:flex-start;gap:13px;margin-bottom:16px}
+.cont-icon{width:40px;height:40px;background:var(--green-light);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+.cont-lbl{font-size:11px;color:var(--gray-text);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.cont-val{font-size:15px;color:#222;font-weight:700;line-height:1.4}
+.cont-val a{color:var(--green)}
+.cont-note{font-size:12px;color:var(--gray-text);margin-top:2px}
+.cont-form{background:var(--gray-bg);border-radius:10px;padding:28px}
+.cont-form h2{font-family:'Playfair Display',serif;font-size:20px;color:var(--green-dark);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--green-light)}
+.cont-form-inner{display:flex;flex-direction:column;gap:12px}
+.cont-form input,.cont-form select,.cont-form textarea{width:100%;padding:11px 14px;border:1px solid var(--gray-border);border-radius:5px;font-size:14px;background:#fff;resize:vertical}
+.cont-form select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;cursor:pointer}
+.map-ph{height:260px;background:var(--green-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:var(--green-dark);margin-top:22px}
+
+/* =====================
+   RESPONSIVE
+   ===================== */
+/* =====================
+   TABLET 1024px
+   ===================== */
+@media(max-width:1024px){
+  .proj-grid{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .art-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-top{grid-template-columns:1fr 1fr;gap:24px}
+  .stats-in{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(3,1fr);gap:20px}
+  .step:not(:last-child)::after{display:none}
+  .cat-layout{grid-template-columns:1fr}
+  .filter-box{position:static}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .proj-layout{grid-template-columns:1fr}
+  .about-layout{grid-template-columns:1fr}
+  .contacts-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(3,1fr)}
+  .photo-grid{grid-template-columns:repeat(3,1fr)}
+  .pc-wide{grid-column:span 1}
+  .about-strip-in{grid-template-columns:1fr}
+}
+
+/* =====================
+   MOBILE 768px
+   ===================== */
+@media(max-width:768px){
+  /* Header */
+  .nav{display:none}
+  .burger{display:flex}
+  .header-in{height:60px}
+  .logo-name{font-size:18px}
+  .logo-sub{display:none}
+
+  /* Topbar */
+  .topbar-right{display:none}
+  .topbar-left{gap:10px;flex-wrap:wrap}
+  .topbar-in{padding:6px 14px}
+
+  /* Hero */
+  .hero{height:auto;min-height:300px}
+  .hero-content{padding:30px 18px}
+  .hero-title{font-size:26px;line-height:1.2}
+  .hero-sub{font-size:14px;margin-bottom:22px}
+  .hero-tag{font-size:11px;margin-bottom:12px}
+  .h-btn-main,.h-btn-sec{padding:12px 20px;font-size:14px}
+  .h-prev,.h-next{width:36px;height:36px;font-size:14px}
+  .h-prev{left:8px}
+  .h-next{right:8px}
+
+  /* Stats */
+  .stats-in{grid-template-columns:repeat(2,1fr);gap:0}
+  .stat{padding:14px 8px}
+  .stat-num{font-size:24px}
+  .stat-lbl{font-size:11px}
+
+  /* Pop projects */
+  .pop-sect{padding:36px 0 16px}
+  .pop-tabs{gap:6px;padding:0 14px}
+  .pop-tab{padding:7px 14px;font-size:13px}
+  .proj-grid{grid-template-columns:1fr;gap:14px}
+
+  /* Howto */
+  .howto{padding:40px 0}
+  .howto-sub{font-size:13px;margin-bottom:24px;padding:0 14px}
+  .steps{grid-template-columns:repeat(2,1fr);gap:20px}
+  .step-num{width:58px;height:58px;font-size:22px}
+  .step-ico{font-size:22px}
+  .step-name{font-size:13px}
+
+  /* News */
+  .news-sect{padding:40px 0}
+  .news-card{min-width:calc(100% - 0px)}
+  .news-img-ph{height:140px}
+
+  /* Why us */
+  .why-sect{padding:40px 0}
+  .why-grid{grid-template-columns:1fr;gap:14px}
+  .why-card{padding:20px 16px}
+
+  /* Articles */
+  .art-sect{padding:40px 0}
+  .art-grid{grid-template-columns:1fr;gap:12px}
+
+  /* About strip */
+  .about-strip{padding:36px 0}
+  .about-strip-in{grid-template-columns:1fr;gap:24px}
+  .about-img-ph{height:200px;font-size:40px}
+
+  /* Feedback */
+  .fb-section{flex-direction:column;padding:22px 16px;gap:20px}
+  .fb-text h2{font-size:18px}
+
+  /* Section titles */
+  .sec-title{font-size:22px;margin-bottom:20px}
+
+  /* Filter */
+  .filter-box{padding:16px}
+  .cat-top{flex-direction:column;align-items:flex-start;gap:10px}
+  .cat-tabs{flex-wrap:wrap;gap:6px}
+  .cat-grid{grid-template-columns:1fr;gap:14px}
+  .cat-count{font-size:13px}
+
+  /* Project detail */
+  .proj-layout{grid-template-columns:1fr;gap:20px}
+  .tabs-nav{flex-wrap:wrap}
+  .tab-btn{padding:8px 12px;font-size:12px}
+  .wtbl{font-size:13px}
+  .wtbl th,.wtbl td{padding:8px 10px}
+  .price-val{font-size:24px}
+
+  /* Gallery */
+  .gallery-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .gal-filter{gap:6px}
+  .gal-fbtn{padding:7px 14px;font-size:13px}
+
+  /* Photo grids (service pages) */
+  .photo-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .photo-cell{font-size:11px;padding:6px}
+
+  /* About */
+  .about-layout{grid-template-columns:1fr;gap:20px}
+  .about-sidebar{padding:20px 16px}
+
+  /* Contacts */
+  .contacts-grid{grid-template-columns:1fr;gap:18px}
+  .cont-block{padding:20px 16px}
+  .map-ph{height:200px;font-size:13px}
+
+  /* Footer */
+  .footer-top{grid-template-columns:1fr;gap:20px;padding:30px 16px 20px}
+  .ft-logo{font-size:18px;margin-bottom:12px}
+  .footer-bottom{flex-direction:column;gap:4px;padding:12px 16px;font-size:12px}
+
+  /* Breadcrumbs */
+  .bc{padding:10px 14px 4px;font-size:12px}
+
+  /* Page h1 */
+  .page-h1{font-size:20px;margin-bottom:18px}
+
+  /* Service pages */
+  .serv-intro{font-size:14px}
+  .serv-sec h2{font-size:17px}
+  .serv-sec p{font-size:13px}
+  .doc-item{padding:11px 12px;gap:10px}
+  .doc-img{width:56px;height:42px}
+
+  /* Slider thumbs */
+  .sl-thumbs{gap:5px}
+  .thumb{font-size:9px}
+
+  /* mw padding */
+  .mw{padding:0 14px}
+}
+
+/* =====================
+   MOBILE SMALL 480px
+   ===================== */
+@media(max-width:480px){
+  /* Hero */
+  .hero{min-height:260px}
+  .hero-title{font-size:20px}
+  .hero-sub{font-size:13px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .hero-btns{flex-direction:column;gap:10px}
+  .h-btn-main,.h-btn-sec{width:100%;text-align:center}
+
+  /* Stats: 1 column */
+  .stats-in{grid-template-columns:1fr 1fr}
+  .stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}
+  .stat:nth-child(odd){border-right:1px solid rgba(255,255,255,.1)}
+
+  /* Steps: 1 column */
+  .steps{grid-template-columns:1fr 1fr}
+
+  /* Grids: 1 column */
+  .proj-grid{grid-template-columns:1fr}
+  .cat-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .photo-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .art-grid{grid-template-columns:1fr}
+
+  /* Tabs - scrollable */
+  .tabs-nav{overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px;-webkit-overflow-scrolling:touch}
+  .tabs-nav::-webkit-scrollbar{height:2px}
+  .tabs-nav::-webkit-scrollbar-thumb{background:var(--green-light)}
+  .tab-btn{white-space:nowrap;padding:8px 11px;font-size:12px;flex-shrink:0}
+
+  /* Pop tabs - scrollable */
+  .pop-tabs{overflow-x:auto;flex-wrap:nowrap;padding:0 14px 8px;justify-content:flex-start;-webkit-overflow-scrolling:touch}
+  .pop-tab{white-space:nowrap;flex-shrink:0}
+
+  /* Cat tabs */
+  .cat-tabs{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+  .cat-tab{white-space:nowrap;flex-shrink:0}
+
+  /* Header */
+  .logo-name{font-size:16px}
+  .logo-mark{width:36px;height:36px}
+  .logo-mark svg{width:20px;height:20px}
+  .header-in{padding:0 14px;height:56px}
+
+  /* Topbar */
+  .topbar-left{gap:8px}
+  .topbar-in{padding:5px 14px}
+  .topbar a{font-size:12px}
+
+  /* Tables - horizontal scroll */
+  .wtbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .wtbl{min-width:500px}
+
+  /* Footer */
+  .footer-top{padding:24px 14px 16px}
+
+  /* Project sidebar */
+  .proj-side{padding:18px 14px}
+  .det-val{font-size:18px}
+
+  /* Gallery filter */
+  .gal-filter{overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+  .gal-fbtn{white-space:nowrap;flex-shrink:0}
+  .gallery-grid{gap:6px}
+
+  /* Section title */
+  .sec-title{font-size:20px}
+  .page-h1{font-size:18px}
+
+  /* About sidebar stacked */
+  .astat-num{font-size:26px}
+
+  /* Contacts */
+  .cont-val{font-size:14px}
+  .cont-icon{width:36px;height:36px;font-size:16px}
+
+  /* Service docs */
+  .doc-item{padding:10px}
+  .doc-num{width:30px;height:30px;font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<!-- ======== TOPBAR ======== -->
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="topbar-left">
+      <a href="#"><span class="ti ti-ig">ig</span>@russtroy_gk</a>
+      <a href="#"><span class="ti ti-wa">✓</span>Написать в WhatsApp</a>
+      <a href="tel:+79991234567"><span class="ti ti-ph">☎</span>+7 (999) 123-45-67</a>
+    </div>
+    <div class="topbar-right">
+      <span style="color:#666;font-size:12px">Пн.–Пт. 10:00–18:00</span>
+      <a href="#" class="topbar-cta" onclick="goFb();return false">Заказать звонок</a>
+    </div>
+  </div>
+</div>
+
+<!-- ======== HEADER ======== -->
+<header class="header">
+  <div class="header-in">
+    <div class="logo" onclick="go('home')">
+      <div class="logo-mark">
+        <svg viewBox="0 0 30 30"><path d="M15 3L2 13h3v14h8v-8h4v8h8V13h3z"/></svg>
+      </div>
+      <div>
+        <div class="logo-name">РусьСтрой</div>
+        <div class="logo-sub">Группа компаний</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <div class="ni">
+        <button class="nl">Проекты <span class="na"></span></button>
+        <div class="drop">
+          <a onclick="go('catalog','дом-бревно')">Дома из бревна</a>
+          <a onclick="go('catalog','дом-брус')">Дома из бруса</a>
+          <a onclick="go('catalog','баня-брус')">Бани из бруса</a>
+          <a onclick="go('catalog','баня-бревно')">Бани из бревна</a>
+        </div>
+      </div>
+      <div class="ni">
+        <button class="nl">Услуги <span class="na"></span></button>
+        <div class="drop">
+          <a onclick="go('sborka')">Сборка сруба</a>
+          <a onclick="go('fundament')">Фундамент</a>
+          <a onclick="go('otdelka')">Отделка</a>
+          <a onclick="go('krovlya')">Кровля</a>
+          <a onclick="go('proizvodstvo')">Производство</a>
+          <a onclick="go('proektirovanie')">Проектирование и дизайн</a>
+        </div>
+      </div>
+      <div class="ni">
+        <button class="nl">Готовые объекты <span class="na"></span></button>
+        <div class="drop">
+          <a onclick="go('gallery','all')">Все объекты</a>
+          <a onclick="go('gallery','doma')">Дома</a>
+          <a onclick="go('gallery','bani')">Бани</a>
+          <a onclick="go('gallery','prochee')">Прочее</a>
+        </div>
+      </div>
+      <div class="ni"><button class="nl" onclick="go('about')">О компании</button></div>
+      <div class="ni"><button class="nl" onclick="go('contacts')">Контакты</button></div>
+    </nav>
+    <button class="burger" id="brgBtn" onclick="toggleMob()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mob-nav" id="mobNav">
+    <a onclick="go('home')">🏠 Главная</a>
+    <a onclick="go('catalog')">📋 Все проекты</a>
+    <a class="mob-sub" onclick="go('catalog','дом-бревно')">— Дома из бревна</a>
+    <a class="mob-sub" onclick="go('catalog','дом-брус')">— Дома из бруса</a>
+    <a class="mob-sub" onclick="go('catalog','баня-бревно')">— Бани из бревна</a>
+    <a class="mob-sub" onclick="go('catalog','баня-брус')">— Бани из бруса</a>
+    <a onclick="go('sborka')">🔨 Сборка сруба</a>
+    <a onclick="go('fundament')">🏗️ Фундамент</a>
+    <a onclick="go('otdelka')">🎨 Отделка</a>
+    <a onclick="go('krovlya')">🏚️ Кровля</a>
+    <a onclick="go('proizvodstvo')">🏭 Производство</a>
+    <a onclick="go('proektirovanie')">📐 Проектирование</a>
+    <a onclick="go('gallery')">🖼️ Готовые объекты</a>
+    <a onclick="go('about')">ℹ️ О компании</a>
+    <a onclick="go('contacts')">📞 Контакты</a>
+  </nav>
+</header>
+
+<!-- =====================================================================
+     PAGES
+     ===================================================================== -->
+
+<!-- =========== HOME =========== -->
+<div class="page active" id="page-home">
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-track" id="heroTrack">
+      <!-- Slide 1 -->
+      <div class="hero-slide hs1">
+        <div class="hero-deco"><svg viewBox="0 0 1200 520" preserveAspectRatio="none"><path d="M0 420 L250 310 L500 390 L750 260 L1000 360 L1200 300 L1200 520 L0 520Z" fill="rgba(255,255,255,.04)"/><circle cx="950" cy="130" r="200" fill="rgba(255,255,255,.03)"/><circle cx="100" cy="400" r="120" fill="rgba(255,255,255,.03)"/></svg></div>
+        <div class="hero-content">
+          <div class="hero-tag">Собственное производство с 2015 года</div>
+          <div class="hero-title">Постройте дом из зимнего леса по самой низкой цене в регионе</div>
+          <div class="hero-sub">Дома и бани из оцилиндрованного бревна и профилированного бруса. Гарантия 36 месяцев.</div>
+          <div class="hero-btns">
+            <button class="h-btn-main" onclick="go('catalog')">Смотреть каталог</button>
+            <button class="h-btn-sec" onclick="goFb()">Получить консультацию</button>
+          </div>
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="hero-slide hs2">
+        <div class="hero-content">
+          <div class="hero-tag">Более 2000 реализованных проектов</div>
+          <div class="hero-title">Дома и бани из оцилиндрованного бревна и профилированного бруса</div>
+          <div class="hero-sub">Квалифицированные штатные бригады. Соблюдение сроков. Экскурсии на действующие стройплощадки.</div>
+          <div class="hero-btns">
+            <button class="h-btn-main" onclick="go('catalog')">Подробнее</button>
+            <button class="h-btn-sec" onclick="go('gallery')">Готовые объекты</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="h-prev" onclick="heroGo(-1)">&#8592;</button>
+    <button class="h-next" onclick="heroGo(1)">&#8594;</button>
+    <div class="h-dots">
+      <div class="h-dot active" onclick="heroSet(0)"></div>
+      <div class="h-dot" onclick="heroSet(1)"></div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="stats-in">
+      <div class="stat"><span class="stat-num">2000+</span><span class="stat-lbl">реализованных проектов</span></div>
+      <div class="stat"><span class="stat-num">36 мес.</span><span class="stat-lbl">гарантия на работы</span></div>
+      <div class="stat"><span class="stat-num">300+</span><span class="stat-lbl">проектов в каталоге</span></div>
+      <div class="stat"><span class="stat-num">2015</span><span class="stat-lbl">год основания</span></div>
+    </div>
+  </div>
+
+  <!-- Popular projects -->
+  <div class="pop-sect">
+    <div class="mw">
+      <h2 class="sec-title">Популярные проекты домов и бань</h2>
+      <div class="pop-tabs">
+        <button class="pop-tab active" onclick="popFilter('дом-брус',this)">Дома из бруса</button>
+        <button class="pop-tab" onclick="popFilter('дом-бревно',this)">Дома из бревна</button>
+        <button class="pop-tab" onclick="popFilter('баня-бревно',this)">Бани из бревна</button>
+        <button class="pop-tab" onclick="popFilter('баня-брус',this)">Бани из бруса</button>
+      </div>
+      <div class="proj-grid" id="popGrid"></div>
+    </div>
+  </div>
+
+  <!-- How we work -->
+  <div class="howto">
+    <div class="mw">
+      <h2 class="sec-title">КАК МЫ РАБОТАЕМ</h2>
+      <p class="howto-sub">Проект подбирается с учётом ландшафта, ваших пожеланий и используемых материалов</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-ico">📋</div><div class="step-name">Выбор проекта</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-ico">✏️</div><div class="step-name">Создание проекта</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-ico">✅</div><div class="step-name">Утверждение</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-ico">🏗️</div><div class="step-name">Строительство</div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-ico">🏠</div><div class="step-name">Сдача объекта</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- News -->
+  <div class="news-sect">
+    <div class="mw">
+      <h2 class="sec-title">Наши новости</h2>
+      <div class="news-slider-wrap">
+        <div class="news-track" id="newsTrack">
+          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#d8e8d2">🏠 Объект 2024</div><div class="news-body"><div class="news-date">25.10.2024</div><div class="news-title-t">Завершили строительство дома из профилированного бруса в Новосибирской области</div><div class="news-excerpt">Выполнен монтаж дома из профилированного бруса 190х140 в дер. Ерестная Новосибирской области. Наружняя и внутренняя отделка...</div></div></div>
+          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#cdd9e0">🌲 Объект 2024</div><div class="news-body"><div class="news-date">23.10.2024</div><div class="news-title-t">Завершили строительство дома из оцилиндрованного бревна 220 мм в Новосибирской области</div><div class="news-excerpt">Изготовлен домокомплект площадью 240 кв.м из оцилиндрованного бревна диаметром 220 мм...</div></div></div>
+          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#e0d8cc">🏡 Объект 2024</div><div class="news-body"><div class="news-date">15.01.2024</div><div class="news-title-t">Завершили строительство дома из профилированного бруса 190х190 в Новосибирской области</div><div class="news-excerpt">Дом из профилированного бруса 190х190 в Новосибирской области, пос. Рыбачий...</div></div></div>
+          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#d8e8d2">🏠 Объект 2020</div><div class="news-body"><div class="news-date">21.08.2020</div><div class="news-title-t">Завершили строительство дома в Новосибирске площадью 100 м²</div><div class="news-excerpt">Дом площадью 100 м² из профилированного бруса 190/140...</div></div></div>
+          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#cdd9e0">🏡 Объект 2020</div><div class="news-body"><div class="news-date">01.07.2020</div><div class="news-title-t">Завершили строительство дома в Томске площадью 125 м²</div><div class="news-excerpt">Дом площадью 125 м² из профилированного бруса 190/140 в Томске...</div></div></div>
+          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#e0d8d2">🛁 Объект 2020</div><div class="news-body"><div class="news-date">13.06.2020</div><div class="news-title-t">Завершили строительство бани в Томске площадью 50 м²</div><div class="news-excerpt">Баня площадью 50 м² из профилированного бруса 190/140 в Томске...</div></div></div>
+          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#d8e8d2">🌲 Объект 2020</div><div class="news-body"><div class="news-date">08.03.2020</div><div class="news-title-t">Завершили строительство дома 130 м² из оцилиндрованного бревна</div><div class="news-excerpt">Дом площадью 130 м² из оцилиндрованного бревна диаметром 24 см в Новосибирске...</div></div></div>
+          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#cdd9e0">🏗️ Объект 2019</div><div class="news-body"><div class="news-date">20.03.2019</div><div class="news-title-t">Завершаем строительство дома из оцилиндрованного бревна Д280мм в пос. Кольцово</div><div class="news-excerpt">Строительство дома из бревна диаметром 280 мм в Новосибирской области...</div></div></div>
+        </div>
+      </div>
+      <div class="news-nav">
+        <button class="news-btn" onclick="newsGo(-1)">&#8592;</button>
+        <button class="news-btn" onclick="newsGo(1)">&#8594;</button>
+      </div>
+      <div class="news-all"><a onclick="go('gallery')">Смотреть все готовые объекты →</a></div>
+    </div>
+  </div>
+
+  <!-- Why us -->
+  <div class="why-sect">
+    <div class="mw">
+      <h2 class="sec-title light">Почему выбирают нас</h2>
+      <div class="why-grid">
+        <div class="why-card"><div class="why-icon">🏆</div><div><div class="why-title">Гарантия 36 месяцев</div><div class="why-desc">Официальная гарантия на все виды строительных и монтажных работ</div></div></div>
+        <div class="why-card"><div class="why-icon">⏰</div><div><div class="why-title">Соблюдение сроков</div><div class="why-desc">Строго придерживаемся графика — ваш дом будет готов в оговорённые сроки</div></div></div>
+        <div class="why-card"><div class="why-icon">🏠</div><div><div class="why-title">Более 2000 реализованных проектов</div><div class="why-desc">Многолетний опыт и сотни довольных клиентов по всей Новосибирской и Томской областях</div></div></div>
+        <div class="why-card"><div class="why-icon">🏭</div><div><div class="why-title">Собственное производство</div><div class="why-desc">Станки ОЦС-2АМ и УЧС-2М обеспечивают идеальную геометрию бревна. Собственный заточной цех.</div></div></div>
+        <div class="why-card"><div class="why-icon">👷</div><div><div class="why-title">Штатные бригады строителей</div><div class="why-desc">Работают только постоянные квалифицированные бригады — никаких случайных субподрядчиков</div></div></div>
+        <div class="why-card"><div class="why-icon">👁️</div><div><div class="why-title">Экскурсии на объекты</div><div class="why-desc">Приглашаем на действующие стройплощадки — убедитесь в качестве лично до подписания договора</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Articles -->
+  <div class="art-sect">
+    <div class="mw">
+      <h2 class="sec-title">Важное о деревянном домостроении</h2>
+      <div class="art-grid">
+        <div class="art-card"><div class="art-title-t">Брусовой дом — зимняя стройка: плюсы и минусы</div><div class="art-exc">Проведение строительных работ в зимнее время изначально кажется нецелесообразным, однако имеет ряд значительных преимуществ...</div><div class="art-more">Подробнее →</div></div>
+        <div class="art-card"><div class="art-title-t">Оптимальная толщина бревна: нюансы выбора</div><div class="art-exc">В сфере загородного строительства особенно распространён вопрос о выборе оптимального диаметра бревна для дома...</div><div class="art-more">Подробнее →</div></div>
+        <div class="art-card"><div class="art-title-t">Правильно утепляем дом из бруса</div><div class="art-exc">Загородные дома из бруса существенно отличаются от традиционных строений и требуют особого подхода к утеплению...</div><div class="art-more">Подробнее →</div></div>
+        <div class="art-card"><div class="art-title-t">Особенности усадки брусового дома</div><div class="art-exc">Любое строение из древесины требует времени для усадки по причине изменения объёма дерева при высыхании...</div><div class="art-more">Подробнее →</div></div>
+        <div class="art-card"><div class="art-title-t">Виды современных домов из дерева. Правила возведения</div><div class="art-exc">Жильё из натурального дерева — это экологичность, уют и особый микроклимат. Разбираем виды и технологии...</div><div class="art-more">Подробнее →</div></div>
+        <div class="art-card"><div class="art-title-t">Покраска деревянного дома по всем правилам</div><div class="art-exc">Если вы думаете, что покрасить деревянную поверхность можно быстро и без усилий — это не так. Разбираем технологию...</div><div class="art-more">Подробнее →</div></div>
+        <div class="art-card"><div class="art-title-t">Утепление крыши дома</div><div class="art-exc">Особое место в конструкции дома занимает крыша. Каждый её элемент выполняет важную защитную функцию...</div><div class="art-more">Подробнее →</div></div>
+        <div class="art-card"><div class="art-title-t">Особенности проектирования домов из профилированного бруса</div><div class="art-exc">Проектирование домов из профилированного бруса требует учёта специфических особенностей этого материала...</div><div class="art-more">Подробнее →</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About strip -->
+  <div class="about-strip">
+    <div class="mw">
+      <div class="about-strip-in">
+        <div>
+          <h2>ГК «РусьСтрой» в Новосибирске</h2>
+          <p>Группа компаний «РусьСтрой» предлагает квалифицированную помощь в правильном выборе и строительстве деревянного дома, бани или другого строения. Имея многолетний опыт производства оцилиндрованного бревна, профилированного бруса и строительства, мы поможем в кратчайшие сроки стать счастливым обладателем деревянного дома.</p>
+          <p>Для производства используем сосну, кедр, лиственницу, заготовленные на севере Томской области и в Красноярском крае. Отличительная особенность — высокая плотность годовых колец, что уменьшает растрескивание при усушке.</p>
+          <p><strong>Предлагаем комплекс услуг:</strong></p>
+          <ul>
+            <li>Архитектурное решение и внутренний дизайн</li>
+            <li>Подготовка проектной и сметной документации</li>
+            <li>Возведение фундамента</li>
+            <li>Комплект материалов (бревно, брус)</li>
+            <li>Монтаж стен, перекрытий, кровли</li>
+            <li>Наружная и внутренняя отделка</li>
+            <li>Коммуникации и ограждение участка</li>
+          </ul>
+        </div>
+        <div class="about-img-ph">🌲</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feedback home -->
+  <div class="fb-wrap mw" id="home-fb">
+    <div class="fb-section">
+      <div class="fb-text"><h2>У вас остались вопросы?</h2><p>Оставьте заявку — специалист свяжется с вами и ответит на все вопросы</p></div>
+      <div class="fb-form">
+        <select id="fb-city-home"><option value="">Выберите город</option><option>Новосибирск</option><option>Томск</option></select>
+        <input type="tel" id="fb-phone-home" placeholder="+7 (___) ___-__-__"/>
+        <button class="btn-or btn-block" onclick="submitFb('fb-city-home','fb-phone-home')">Отправить</button>
+      </div>
+    </div>
+  </div>
+</div><!-- /home -->
+
+<!-- =========== CATALOG =========== -->
+<div class="page" id="page-catalog">
+  <div class="bc"><a onclick="go('home')">Главная</a><span>»</span> Все проекты</div>
+  <div class="mw" style="padding-bottom:50px">
+    <h1 class="page-h1">Каталог</h1>
+    <div class="cat-layout">
+      <!-- Filter panel -->
+      <div class="filter-box">
+        <div class="filter-head">Фильтр <span class="filter-reset" onclick="resetFilter()">Сбросить</span></div>
+        <div class="filter-group">
+          <div class="fg-title">Тип</div>
+          <label><input type="radio" name="ftype" value="" checked onchange="applyFilter()"> Все проекты</label>
+          <label><input type="radio" name="ftype" value="дом" onchange="applyFilter()"> Дома</label>
+          <label><input type="radio" name="ftype" value="баня" onchange="applyFilter()"> Бани</label>
+        </div>
+        <div class="filter-group">
+          <div class="fg-title">Материал</div>
+          <label><input type="checkbox" name="fmat" value="бревно" onchange="applyFilter()"> Бревно оцилиндрованное</label>
+          <label><input type="checkbox" name="fmat" value="брус" onchange="applyFilter()"> Брус профилированный</label>
+        </div>
+        <div class="filter-group">
+          <div class="fg-title">Этажность</div>
+          <label><input type="checkbox" name="fetazh" value="1" onchange="applyFilter()"> 1 этаж</label>
+          <label><input type="checkbox" name="fetazh" value="2" onchange="applyFilter()"> 2 этажа</label>
+        </div>
+        <div class="filter-group">
+          <div class="fg-title">Площадь, м²</div>
+          <label><input type="checkbox" name="fsq" value="10-50" onchange="applyFilter()"> от 10 до 50</label>
+          <label><input type="checkbox" name="fsq" value="50-100" onchange="applyFilter()"> от 50 до 100</label>
+          <label><input type="checkbox" name="fsq" value="100-150" onchange="applyFilter()"> от 100 до 150</label>
+          <label><input type="checkbox" name="fsq" value="150-200" onchange="applyFilter()"> от 150 до 200</label>
+          <label><input type="checkbox" name="fsq" value="200-400" onchange="applyFilter()"> от 200 до 400</label>
+        </div>
+      </div>
+      <!-- Grid -->
+      <div>
+        <div class="cat-top">
+          <div class="cat-tabs">
+            <button class="cat-tab active" id="ctAll" onclick="catTab('',this)">Все</button>
+            <button class="cat-tab" id="ctDom" onclick="catTab('дом',this)">Дома</button>
+            <button class="cat-tab" id="ctBanya" onclick="catTab('баня',this)">Бани</button>
+          </div>
+          <div class="cat-count" id="catCount"></div>
+        </div>
+        <div class="cat-grid" id="catGrid"></div>
+        <div class="cat-seo">
+          <h3>Каталог деревянных домов и бань</h3>
+          <p>Деревянные дома получили заслуженную популярность — изысканное строение из натурального материала есть в каждом загородном посёлке. Дом из оцилиндрованного бревна тёплый, экологически безопасный, долговечный. Для возведения комфортного жилья используется натуральный материал сосновых и других пород дерева.</p>
+          <p>Компания РусьСтрой предлагает дома с террасами, балконами и мансардами необычного дизайна, с асимметричными и многоярусными крышами. Каждый дом соответствует главным требованиям — практичность, комфорт, польза для здоровья.</p>
+        </div>
+      </div>
+    </div>
+    <div class="fb-section" style="margin-top:36px">
+      <div class="fb-text"><h2>У вас остались вопросы?</h2><p>Оставьте заявку — специалист подберёт подходящий проект</p></div>
+      <div class="fb-form">
+        <select id="fb-city-cat"><option value="">Выберите город</option><option>Новосибирск</option><option>Томск</option></select>
+        <input type="tel" id="fb-phone-cat" placeholder="+7 (___) ___-__-__"/>
+        <button class="btn-or btn-block" onclick="submitFb('fb-city-cat','fb-phone-cat')">Отправить</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========== PROJECT DETAIL =========== -->
+<div class="page" id="page-project">
+  <div class="bc"><a onclick="go('home')">Главная</a><span>»</span><a onclick="go('catalog')">Все проекты</a><span>»</span><span id="proj-bc-name"></span></div>
+  <div class="mw" style="padding-bottom:50px">
+    <h1 class="page-h1" id="proj-title"></h1>
+    <div class="proj-layout">
+      <!-- Gallery -->
+      <div>
+        <div class="gal-tabs-wrap">
+          <div class="gal-tab active" onclick="galTabClick('fasady',this)">Фасады</div>
+          <div class="gal-tab" onclick="galTabClick('plan',this)">Планировка</div>
+        </div>
+        <div class="slider-wrap" id="projSliderWrap">
+          <div class="slider-track" id="projSliderTrack">
+            <div class="slide" style="background:#cdd8c8">🏠<div>Фасад 1</div></div>
+            <div class="slide" style="background:#c8d0cd">🏠<div>Фасад 2</div></div>
+            <div class="slide" style="background:#d0d8c8">🏠<div>Вид сбоку</div></div>
+            <div class="slide" style="background:#c8d4d4">📐<div>Планировка 1 эт.</div></div>
+            <div class="slide" style="background:#cdd4d0">📐<div>Планировка 2 эт.</div></div>
+          </div>
+          <button class="sl-prev" onclick="projGo(-1)">&#8592;</button>
+          <button class="sl-next" onclick="projGo(1)">&#8594;</button>
+        </div>
+        <div class="sl-dots" id="projDots">
+          <div class="sdot active" onclick="projJump(0)"></div>
+          <div class="sdot" onclick="projJump(1)"></div>
+          <div class="sdot" onclick="projJump(2)"></div>
+          <div class="sdot" onclick="projJump(3)"></div>
+          <div class="sdot" onclick="projJump(4)"></div>
+        </div>
+        <div class="sl-thumbs" id="projThumbs">
+          <div class="thumb active" style="background:#cdd8c8" onclick="projJump(0)">Фасад 1</div>
+          <div class="thumb" style="background:#c8d0cd" onclick="projJump(1)">Фасад 2</div>
+          <div class="thumb" style="background:#d0d8c8" onclick="projJump(2)">Сбоку</div>
+          <div class="thumb" style="background:#c8d4d4" onclick="projJump(3)">План 1эт.</div>
+          <div class="thumb" style="background:#cdd4d0" onclick="projJump(4)">План 2эт.</div>
+        </div>
+      </div>
+      <!-- Details sidebar -->
+      <div class="proj-side">
+        <div class="det-row">
+          <div class="det-icon">📐</div>
+          <div><div class="det-lbl">Площадь</div><div class="det-val" id="pd-sq"></div></div>
+        </div>
+        <div class="det-row">
+          <div class="det-icon">🏠</div>
+          <div><div class="det-lbl">Этажность</div><div class="det-val" id="pd-fl"></div><div class="det-desc" id="pd-desc"></div></div>
+        </div>
+        <div class="sel-grp">
+          <label>Выберите фундамент:</label>
+          <select>
+            <option>Свайно-винтовой</option>
+            <option>Монолитная плита</option>
+            <option>Ленточный</option>
+            <option>Железобетонные сваи</option>
+          </select>
+        </div>
+        <div class="sel-grp">
+          <label>Выберите материал:</label>
+          <select>
+            <option>Бревно оцилиндрованное 200 мм</option>
+            <option>Бревно оцилиндрованное 220 мм</option>
+            <option selected>Бревно оцилиндрованное 240 мм</option>
+            <option>Бревно оцилиндрованное 260 мм</option>
+            <option>Бревно оцилиндрованное 280 мм</option>
+            <option>Брус профилированный 140×190</option>
+            <option>Брус профилированный 140×140</option>
+          </select>
+        </div>
+        <div class="price-blk">
+          <div class="price-lbl">Цена</div>
+          <div class="price-val">По запросу</div>
+        </div>
+        <button class="btn-or btn-block" onclick="goFb()">Оставить заявку</button>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs-nav">
+      <button class="tab-btn active" onclick="tabSwitch('tp1',this)">Базовая комплектация</button>
+      <button class="tab-btn" onclick="tabSwitch('tp2',this)">Дополнительные работы</button>
+      <button class="tab-btn" onclick="tabSwitch('tp3',this)">Отделка</button>
+      <button class="tab-btn" onclick="tabSwitch('tp4',this)">Варианты строительства</button>
+    </div>
+    <div class="tab-pane active" id="tp1">
+      <ul class="compl-list">
+        <li class="head-li">В базовую комплектацию входит: Проектная документация. Домокомплект с кровлей.</li>
+        <li>3D виды</li>
+        <li>План этажей</li>
+        <li>План лаг пола и балок перекрытия</li>
+        <li>Развертки стен</li>
+        <li>Фасады</li>
+        <li>Разрезы</li>
+        <li>Таблица проёмов</li>
+        <li>План стропильной системы</li>
+        <li>Развертки скатов кровли</li>
+        <li>Лаги пола и балки перекрытия</li>
+        <li>Стропильная система и обрешётка</li>
+        <li>Расходные материалы (межвенцовый утеплитель, нагеля, крепёж)</li>
+        <li>Кровельный материал (металлочерепица или профлист)</li>
+        <li>Доставка до места строительства</li>
+        <li>Сборка домокомплекта и кровли</li>
+      </ul>
+    </div>
+    <div class="tab-pane" id="tp2">
+      <div class="wtbl-wrap"><table class="wtbl">
+        <thead><tr><th>Вид работ</th><th>Что входит в стоимость</th></tr></thead>
+        <tbody>
+          <tr><td>Ленточный фундамент</td><td>Разметка на участке · Выборка грунта · Отсыпка ПГС · Установка армированного каркаса · Деревянная опалубка · Заливка бетоном М200</td></tr>
+          <tr><td>Винтовые сваи</td><td>Экспресс геология · Доставка свай · Установка свай с оголовками · Монтаж обвязочного бруса</td></tr>
+          <tr><td>Монолитная плита</td><td>Укладка геотекстиля · Отсыпка ПГС · Гидроизоляция · Настил пеноплекса · Армокаркас · Заливка бетона</td></tr>
+          <tr><td>Железобетонные сваи</td><td>Экспресс геология · Доставка свай · Установка свай 150×150 мм, длиной 3000 мм</td></tr>
+          <tr><td>Мягкая черепица</td><td>Укладка ОСБ плиты · Герметизация швов мастикой · Настил подкладочного ковра · Укладка черепицы</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="tab-pane" id="tp3">
+      <div class="warn-box"><span style="font-size:20px">⚠️</span><span>Стоимость отделочных работ рассчитывается индивидуально. В стоимость базовой комплектации услуги по отделке не входят.</span></div>
+      <div class="wtbl-wrap"><table class="wtbl">
+        <thead><tr><th colspan="2">Отделочные работы для домов из бревна:</th></tr></thead>
+        <tbody>
+          <tr><td colspan="2">Прокладка коммуникаций (вода, канализация)</td></tr>
+          <tr><td colspan="2">Разводка электрики</td></tr>
+          <tr><td colspan="2">Шлифовка бревна</td></tr>
+          <tr><td colspan="2">Конопатка бревна</td></tr>
+          <tr><td colspan="2">Покраска строения</td></tr>
+          <tr><td colspan="2">Обустройство проёмов обсадочной доской</td></tr>
+          <tr><td colspan="2">Установка окон и дверей с обшивкой наличником</td></tr>
+          <tr><td colspan="2">Утепление полов, потолка и кровли</td></tr>
+          <tr><td colspan="2">Монтаж черновых и чистовых полов</td></tr>
+          <tr><td colspan="2">Подшив потолков и карнизов</td></tr>
+          <tr><td colspan="2">Водосточная система</td></tr>
+          <tr><td colspan="2">Установка входной и межэтажной лестницы</td></tr>
+          <tr><td colspan="2">Отмостка</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="tab-pane" id="tp4">
+      <div class="wtbl-wrap"><table class="wtbl">
+        <thead><tr><th>Материал</th><th>Профиль</th><th>Сечение / диаметр</th><th>Стоимость</th></tr></thead>
+        <tbody>
+          <tr><td>Бревно оцилиндрованное</td><td>Круглый</td><td>200 мм</td><td class="ptag">По запросу</td></tr>
+          <tr><td>Бревно оцилиндрованное</td><td>Круглый</td><td>220 мм</td><td class="ptag">По запросу</td></tr>
+          <tr><td>Бревно оцилиндрованное</td><td>Круглый</td><td>240 мм</td><td class="ptag">По запросу</td></tr>
+          <tr><td>Бревно оцилиндрованное</td><td>Круглый</td><td>260 мм</td><td class="ptag">По запросу</td></tr>
+          <tr><td>Бревно оцилиндрованное</td><td>Круглый</td><td>280 мм</td><td class="ptag">По запросу</td></tr>
+          <tr><td>Брус профилированный</td><td>Профилированный</td><td>140×190 мм</td><td class="ptag">По запросу</td></tr>
+          <tr><td>Брус профилированный</td><td>Профилированный</td><td>180×200 мм</td><td class="ptag">По запросу</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="fb-section" style="margin-top:36px">
+      <div class="fb-text"><h2>У вас остались вопросы?</h2><p>Оставьте заявку — специалист ответит на все вопросы</p></div>
+      <div class="fb-form">
+        <select id="fb-city-proj"><option value="">Выберите город</option><option>Новосибирск</option><option>Томск</option></select>
+        <input type="tel" id="fb-phone-proj" placeholder="+7 (___) ___-__-__"/>
+        <button class="btn-or btn-block" onclick="submitFb('fb-city-proj','fb-phone-proj')">Отправить</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========== GALLERY =========== -->
+<div class="page" id="page-gallery">
+  <div class="bc"><a onclick="go('home')">Главная</a><span>»</span> Готовые объекты</div>
+  <div class="mw" style="padding-bottom:50px">
+    <h1 class="page-h1">Наши работы</h1>
+    <div class="gal-filter">
+      <button class="gal-fbtn active" onclick="galFilter('all',this)">Все</button>
+      <button class="gal-fbtn" onclick="galFilter('doma',this)">Дома</button>
+      <button class="gal-fbtn" onclick="galFilter('bani',this)">Бани</button>
+      <button class="gal-fbtn" onclick="galFilter('prochee',this)">Прочее</button>
+    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+    <button class="show-more" id="showMoreBtn" onclick="galShowMore()">Показать ещё</button>
+    <div class="fb-section" style="margin-top:36px">
+      <div class="fb-text"><h2>Хотите такой же объект?</h2><p>Оставьте заявку — подберём проект и рассчитаем стоимость</p></div>
+      <div class="fb-form">
+        <select id="fb-city-gal"><option value="">Выберите город</option><option>Новосибирск</option><option>Томск</option></select>
+        <input type="tel" id="fb-phone-gal" placeholder="+7 (___) ___-__-__"/>
+        <button class="btn-or btn-block" onclick="submitFb('fb-city-gal','fb-phone-gal')">Отправить</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========== ABOUT =========== -->
+<div class="page" id="page-about">
+  <div class="bc"><a onclick="go('home')">Главная</a><span>»</span> О компании</div>
+  <div class="mw" style="padding-bottom:50px">
+    <h1 class="page-h1">О КОМПАНИИ</h1>
+    <div class="about-layout">
+      <div class="about-body">
+        <p><strong>Уважаемый посетитель нашего сайта!</strong></p>
+        <p>Группа компаний «РусьСтрой» предлагает квалифицированную помощь в правильном выборе и строительстве деревянного дома или другого строения.</p>
+        <p>Имея многолетний опыт производства оцилиндрованного бревна, профилированного бруса и строительства, мы поможем вам в кратчайшие сроки стать счастливым обладателем деревянного дома.</p>
+        <h2>Предлагаем комплекс услуг:</h2>
+        <ul>
+          <li>Архитектурное решение</li>
+          <li>Внутренний дизайн</li>
+          <li>Подготовка проектной и сметной документации</li>
+          <li>Возведение фундамента</li>
+          <li>Комплект материалов (оцилиндрованное бревно, профилированный брус)</li>
+          <li>Монтаж стен и перекрытий</li>
+          <li>Кровельные работы</li>
+          <li>Наружная и внутренняя отделка</li>
+          <li>Коммуникации</li>
+          <li>Ограждение участка</li>
+        </ul>
+        <p>Для производства оцилиндрованного бревна и профилированного бруса используем сосну, кедр, лиственницу, заготовленные на севере Томской области и в Красноярском крае. Отличительная особенность этой древесины — высокая плотность годовых колец, что уменьшает растрескивание при усушке.</p>
+        <p><strong>Ждём вас в офисе нашей компании!</strong></p>
+      </div>
+      <div class="about-sidebar">
+        <h3>ГК РусьСтрой в цифрах</h3>
+        <div class="astat"><span class="astat-num">2015</span><span class="astat-lbl">год основания</span></div>
+        <div class="astat"><span class="astat-num">2000+</span><span class="astat-lbl">реализованных проектов</span></div>
+        <div class="astat"><span class="astat-num">36 мес.</span><span class="astat-lbl">гарантия на работы</span></div>
+        <div class="astat"><span class="astat-num">300+</span><span class="astat-lbl">проектов в каталоге</span></div>
+        <div class="astat"><span class="astat-num">2</span><span class="astat-lbl">города: Новосибирск и Томск</span></div>
+      </div>
+    </div>
+    <div class="fb-section" style="margin-top:36px">
+      <div class="fb-text"><h2>Остались вопросы?</h2><p>Свяжитесь с нами удобным способом</p></div>
+      <div class="fb-form">
+        <select id="fb-city-about"><option value="">Выберите город</option><option>Новосибирск</option><option>Томск</option></select>
+        <input type="tel" id="fb-phone-about" placeholder="+7 (___) ___-__-__"/>
+        <button class="btn-or btn-block" onclick="submitFb('fb-city-about','fb-phone-about')">Отправить</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========== CONTACTS =========== -->
+<div class="page" id="page-contacts">
+  <div class="bc"><a onclick="go('home')">Главная</a><span>»</span> Контакты</div>
+  <div class="mw" style="padding-bottom:50px">
+    <h1 class="page-h1">КОНТАКТЫ</h1>
+    <div class="contacts-grid">
+      <div class="cont-block">
+        <h2>Новосибирск</h2>
+        <div class="cont-row"><div class="cont-icon">☎</div><div><div class="cont-lbl">Основной телефон</div><div class="cont-val"><a href="tel:+79991234567">+7 (999) 123-45-67</a></div><div class="cont-note">Пн.–Пт. 10:00–18:00</div></div></div>
+        <div class="cont-row"><div class="cont-icon">📱</div><div><div class="cont-lbl">Дополнительный</div><div class="cont-val"><a href="tel:+79991234568">+7 (999) 123-45-68</a></div><div class="cont-note">По предварительной договорённости до 20:00</div></div></div>
+        <div class="cont-row"><div class="cont-icon">📍</div><div><div class="cont-lbl">Адрес офиса</div><div class="cont-val">630003, г. Новосибирск,<br>ул. Владимировская, 2/1, каб. 205</div></div></div>
+        <div class="cont-row"><div class="cont-icon">✉️</div><div><div class="cont-lbl">Email</div><div class="cont-val"><a href="mailto:Russtroy54@yandex.ru">Russtroy54@yandex.ru</a></div></div></div>
+        <div class="cont-row"><div class="cont-icon">🕐</div><div><div class="cont-lbl">Режим работы</div><div class="cont-val">Пн.–Пт. 10:00–18:00</div></div></div>
+        <div class="cont-row"><div class="cont-icon">🏢</div><div><div class="cont-lbl">Юридическое лицо</div><div class="cont-val" style="font-size:13px;font-weight:400">ИП Головачев Геннадий Александрович</div></div></div>
+        <div class="map-ph">🗺️ г. Новосибирск, ул. Владимировская, 2/1</div>
+      </div>
+      <div class="cont-form">
+        <h2>Написать нам</h2>
+        <div class="cont-form-inner">
+          <select id="fb-city-cont"><option value="">Выберите город</option><option>Новосибирск</option><option>Томск</option></select>
+          <input type="text" placeholder="Ваше имя"/>
+          <input type="tel" id="fb-phone-cont" placeholder="+7 (___) ___-__-__"/>
+          <textarea placeholder="Ваш вопрос или комментарий..." style="min-height:90px"></textarea>
+          <button class="btn-or btn-block" onclick="submitFb('fb-city-cont','fb-phone-cont')">Отправить заявку</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========== SBORKA =========== -->
+<div class="page" id="page-sborka">
+  <div class="bc"><a onclick="go('home')">Главная</a><span>»</span> Услуги <span>»</span> Сборка сруба</div>
+  <div class="mw" style="padding-bottom:50px">
+    <h1 class="page-h1">СБОРКА СРУБА</h1>
+    <div class="serv-sec">
+      <div class="photo-grid">
+        <div class="photo-cell" style="background:#d8e8d2">🪵<span>Раскладка бревён на прокладки перед сборкой</span></div>
+        <div class="photo-cell" style="background:#cfd8cc">🪵<span>Подготовка бревён</span></div>
+        <div class="photo-cell" style="background:#d4ddd0">🪵<span>Начало укладки венцов</span></div>
+        <div class="photo-cell" style="background:#ccd6c8">🪵<span>Укладка первого ряда</span></div>
+      </div>
+      <p class="serv-intro">Раскладка бревён на прокладки перед началом сборки.</p>
+      <div class="photo-grid">
+        <div class="photo-cell" style="background:#d8e8d2">🧶<span>Джутирование бревён для утепления конструкции</span></div>
+        <div class="photo-cell" style="background:#cfd8cc">🧶<span>Укладка межвенцового утеплителя</span></div>
+        <div class="photo-cell" style="background:#d4ddd0">🏗️<span>Подача бревна без крана (диаметры 16–20 см)</span></div>
+        <div class="photo-cell" style="background:#ccd6c8">🏗️<span>Монтаж венцов</span></div>
+      </div>
+      <p class="serv-intro">Джутирование бревён для утепления конструкции. Подача бревна без крана (при диаметрах от 16 до 20 см).</p>
+      <div class="photo-grid">
+        <div class="photo-cell" style="background:#d8e8d2">🔩<span>Высверливание отверстий для шкантов</span></div>
+        <div class="photo-cell" style="background:#cfd8cc">🔨<span>Вбивание шкантов</span></div>
+        <div class="photo-cell" style="background:#d4ddd0">⚙️<span>Торцевание бревён</span></div>
+        <div class="photo-cell" style="background:#ccd6c8">⚙️<span>Финальная торцовка</span></div>
+      </div>
+      <p class="serv-intro">Высверливание отверстия для шкантов. Вбивание шкантов. Торцевание бревён.</p>
+      <div class="photo-grid g3">
+        <div class="photo-cell pc-wide" style="background:#d8e8d2">🏠<span>Готовый сруб — общий вид</span></div>
+        <div class="photo-cell" style="background:#cfd8cc">🔗<span>Угловые соединения</span></div>
+      </div>
+    </div>
+    <div class="fb-section">
+      <div class="fb-text"><h2>Нужна сборка сруба?</h2><p>Оставьте заявку — рассчитаем стоимость работ</p></div>
+      <div class="fb-form">
+        <select id="fb-city-sb"><option value="">Выберите город</option><option>Новосибирск</option><option>Томск</option></select>
+        <input type="tel" id="fb-phone-sb" placeholder="+7 (___) ___-__-__"/>
+        <button class="btn-or btn-block" onclick="submitFb('fb-city-sb','fb-phone-sb')">Отправить</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========== FUNDAMENT =========== -->
+<div class="page" id="page-fundament">
+  <div class="bc"><a onclick="go('home')">Главная</a><span>»</span> Услуги <span>»</span> Фундамент</div>
+  <div class="mw" style="padding-bottom:50px">
+    <h1 class="page-h1">ФУНДАМЕНТ</h1>
+    <p class="serv-intro">Возводим фундаменты любой сложности под все типы строений. Для деревянного домостроения используют несколько видов фундамента — в зависимости от характеристик грунта, особенностей рельефа и параметров постройки.</p>
+    <div class="serv-sec">
+      <h2>Ленточный фундамент</h2>
+      <div class="photo-grid g3">
+        <div class="photo-cell pc-wide" style="background:#d4dcd4">🏗️<span>Армирование ленточного фундамента</span></div>
+        <div class="photo-cell" style="background:#ccd4cc">📸<span>Установка опалубки</span></div>
+        <div class="photo-cell" style="background:#c8d0c8">📸<span>Заливка бетоном М200</span></div>
+        <div class="photo-cell" style="background:#d0d8d0">📸<span>Готовый ленточный фундамент</span></div>
+      </div>
+    </div>
+    <div class="serv-sec">
+      <h2>Плитный фундамент (монолитная плита)</h2>
+      <div class="photo-grid g3">
+        <div class="photo-cell pc-wide" style="background:#d4dcd4">🏗️<span>Подготовка основания под плиту</span></div>
+        <div class="photo-cell" style="background:#ccd4cc">📸<span>Армирование монолитной плиты</span></div>
+        <div class="photo-cell" style="background:#c8d0c8">📸<span>Готовая монолитная плита</span></div>
+      </div>
+    </div>
+    <div class="serv-sec">
+      <h2>Фундамент на винтовых сваях</h2>
+      <div class="photo-grid g3">
+        <div class="photo-cell pc-wide" style="background:#d4dcd4">🔩<span>Ввинчивание винтовых свай</span></div>
+        <div class="photo-cell" style="background:#ccd4cc">📸<span>Установка оголовков</span></div>
+        <div class="photo-cell" style="background:#c8d0c8">📸<span>Монтаж обвязочного бруса</span></div>
+      </div>
+    </div>
+    <div class="serv-sec">
+      <h2>Ленточный фундамент с буронабивными сваями и стяжкой под тёплые полы</h2>
+      <div class="photo-grid">
+        <div class="photo-cell" style="background:#d4dcd4">📸<span>Буронабивные сваи</span></div>
+        <div class="photo-cell" style="background:#ccd4cc">📸<span>Ростверк</span></div>
+        <div class="photo-cell" style="background:#c8d0c8">📸<span>Стяжка под тёплый пол</span></div>
+        <div class="photo-cell" style="background:#d0d8d0">📸<span>Готовый фундамент</span></div>
+      </div>
+    </div>
+    <div class="fb-section">
+      <div class="fb-text"><h2>Нужен фундамент?</h2><p>Рассчитаем стоимость под ваш проект бесплатно</p></div>
+      <div class="fb-form">
+        <select id="fb-city-fun"><option value="">Выберите город</option><option>Новосибирск</option><option>Томск</option></select>
+        <input type="tel" id="fb-phone-fun" placeholder="+7 (___) ___-__-__"/>
+        <button class="btn-or btn-block" onclick="submitFb('fb-city-fun','fb-phone-fun')">Отправить</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========== OTDELKA =========== -->
+<div class="page" id="page-otdelka">
+  <div class="bc"><a onclick="go('home')">Главная</a><span>»</span> Услуги <span>»</span> Отделка</div>
+  <div class="mw" style="padding-bottom:50px">
+    <h1 class="page-h1">ОТДЕЛКА</h1>
+    <p class="serv-intro">Отделка деревянного дома — процесс ответственный, ему следует уделить большое внимание, чтобы проект дома в целом получился удачным. Отделку дома из дерева можно разделить на внешнюю и внутреннюю.</p>
+    <div class="serv-sec">
+      <h2>Внешняя отделка деревянных сооружений</h2>
+      <p>Внешняя отделка с точки зрения конструкции наиболее важная: она несёт не только декоративный, но и защитный характер. Именно поэтому её нужно продумать ещё на этапе проектирования деревянного сооружения.</p>
+      <p>Для внешней отделки домов из дерева наиболее часто используют лакокрасочные изделия. Внешняя отделка деревянного дома берёт удар от окружающей среды на себя, защищая дерево. Если внешняя облицовка пришла в негодность или просто надоела, её можно легко заменить новой.</p>
+      <p>Не исключён вариант сохранения первозданного вида дома из дерева с сохранением структуры сруба. В этом случае нужно обязательно обработать стены специальной пропиткой и повторять такие процедуры не реже раза в пятилетку.</p>
+    </div>
+    <div class="serv-sec">
+      <h2>Внутренняя отделка построек из дерева</h2>
+      <p>Внутренняя отделка деревянного дома — больше процесс наведения эстетической красоты, хотя перед оформлением следует несколько этапов защиты дерева изнутри. После постройки дома внутренние поверхности тщательно очищаются, шлифуются и покрываются защитным материалом в несколько слоёв.</p>
+      <p>Если было принято решение тонировать стены, нужно учитывать, что на различных породах древесины оттенок тонера может выглядеть по-разному. Тонировать нужно в два этапа одной кистью, причём в одном направлении. Начинать лучше со светлого колера, плавно переходя на более тёмный.</p>
+      <p>Что касается пола деревянного дома — для его облицовки часто используют кедр и лиственницу, как оптимальное сочетание прочности, эстетичности и долговечности. Деревянный пол также можно тонировать, чаще всего в более тёмный колер, чем тот, что использовался для стен.</p>
+      <p>При отделке деревянного дома не стоит экономить на материалах и пропускать какие-либо этапы при нанесении на стены и пол — это может значительно сократить срок службы жилища и испортить его внешний вид.</p>
+    </div>
+    <div class="fb-section">
+      <div class="fb-text"><h2>Нужна отделка?</h2><p>Рассчитаем стоимость под ваш объект</p></div>
+      <div class="fb-form">
+        <select id="fb-city-otd"><option value="">Выберите город</option><option>Новосибирск</option><option>Томск</option></select>
+        <input type="tel" id="fb-phone-otd" placeholder="+7 (___) ___-__-__"/>
+        <button class="btn-or btn-block" onclick="submitFb('fb-city-otd','fb-phone-otd')">Отправить</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========== KROVLYA =========== -->
+<div class="page" id="page-krovlya">
+  <div class="bc"><a onclick="go('home')">Главная</a><span>»</span> Услуги <span>»</span> Кровля</div>
+  <div class="mw" style="padding-bottom:50px">
+    <h1 class="page-h1">КРОВЛЯ</h1>
+    <div class="serv-sec">
+      <h2>Схема «холодной» кровли с утеплённым потолком (гибкая черепица)</h2>
+      <div class="photo-grid g3">
+        <div class="photo-cell pc-wide" style="background:#d8e0d4">📐<span>Схема холодной кровли — гибкая черепица</span></div>
+        <div class="photo-cell" style="background:#d0d8cc">📐<span>Разрез узла конька</span></div>
+      </div>
+    </div>
+    <div class="serv-sec">
+      <h2>Схема «холодной» кровли с утеплённым потолком (металлочерепица)</h2>
+      <div class="photo-grid g3">
+        <div class="photo-cell pc-wide" style="background:#d8e0d4">📐<span>Схема холодной кровли — металлочерепица</span></div>
+        <div class="photo-cell" style="background:#d0d8cc">📐<span>Разрез кровельного пирога</span></div>
+      </div>
+    </div>
+    <div class="serv-sec">
+      <h2>Схема «тёплой» кровли с утеплённым потолком (металлочерепица)</h2>
+      <div class="photo-grid g3">
+        <div class="photo-cell pc-wide" style="background:#d8e0d4">📐<span>Схема тёплой кровли — металлочерепица</span></div>
+        <div class="photo-cell" style="background:#d0d8cc">📐<span>Разрез с утеплением</span></div>
+      </div>
+    </div>
+    <div class="serv-sec">
+      <h2>Монтаж кровли</h2>
+      <p>Монтаж кровли начинается с установки стропильной системы.</p>
+      <div class="photo-grid">
+        <div class="photo-cell" style="background:#d8e0d4">🏗️<span>Установка стропильной системы</span></div>
+        <div class="photo-cell" style="background:#d0d8cc">📸<span>Монтаж стропил</span></div>
+        <div class="photo-cell" style="background:#ccd4c8">📸<span>Обрешётка</span></div>
+        <div class="photo-cell" style="background:#d4dcd0">📸<span>Укладка ОСБ плиты</span></div>
+      </div>
+      <p>Плита OSB образует идеально ровную поверхность для укладки гибкой черепицы. Гибкая черепица укладывается на гидроизоляционный подкладочный ковёр.</p>
+      <div class="photo-grid">
+        <div class="photo-cell" style="background:#d8e0d4">📸<span>Гидроизоляционный ковёр</span></div>
+        <div class="photo-cell" style="background:#d0d8cc">📸<span>Укладка гибкой черепицы</span></div>
+        <div class="photo-cell" style="background:#ccd4c8">📸<span>Торцевые планки</span></div>
+        <div class="photo-cell" style="background:#d4dcd0">📸<span>Готовая кровля</span></div>
+      </div>
+    </div>
+    <div class="fb-section">
+      <div class="fb-text"><h2>Нужна кровля?</h2><p>Рассчитаем стоимость кровельных работ бесплатно</p></div>
+      <div class="fb-form">
+        <select id="fb-city-kr"><option value="">Выберите город</option><option>Новосибирск</option><option>Томск</option></select>
+        <input type="tel" id="fb-phone-kr" placeholder="+7 (___) ___-__-__"/>
+        <button class="btn-or btn-block" onclick="submitFb('fb-city-kr','fb-phone-kr')">Отправить</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========== PROIZVODSTVO =========== -->
+<div class="page" id="page-proizvodstvo">
+  <div class="bc"><a onclick="go('home')">Главная</a><span>»</span> Услуги <span>»</span> Производство</div>
+  <div class="mw" style="padding-bottom:50px">
+    <h1 class="page-h1">ПРОИЗВОДСТВО</h1>
+    <p class="serv-intro">Для производства своей продукции группа компаний «РусьСтрой» использует сосну, кедр, лиственницу, заготовленные на севере Томской области и Красноярском крае. Отличительная особенность этой древесины — высокая плотность годовых колец, что уменьшает растрескивание при усушке.</p>
+    <div class="serv-sec">
+      <h2>Производство оцилиндрованного бревна</h2>
+      <p>Обработка бревён осуществляется на оцилиндровочных станках токарного типа <strong>ОЦС-2АМ</strong> и чашкорезных станках <strong>УЧС-2М</strong>, что даёт идеальную геометрию обработки оцилиндрованного бревна.</p>
+      <div class="photo-grid">
+        <div class="photo-cell" style="background:#d8e8d2">🏭<span>Станок ОЦС-2АМ</span></div>
+        <div class="photo-cell" style="background:#cfd8c8">🪵<span>Обработка бревна</span></div>
+        <div class="photo-cell" style="background:#d4e0ce">🏭<span>Чашкорезный станок УЧС-2М</span></div>
+        <div class="photo-cell" style="background:#c8d4c2">🪵<span>Готовое оцилиндрованное бревно</span></div>
+        <div class="photo-cell" style="background:#d2dece">📦<span>Сортировка</span></div>
+        <div class="photo-cell" style="background:#ccd8c6">📦<span>Склад бревна</span></div>
+        <div class="photo-cell" style="background:#d0dcc8">🏷️<span>Маркировка домокомплекта</span></div>
+        <div class="photo-cell" style="background:#cad6c4">✅<span>Контроль качества</span></div>
+      </div>
+    </div>
+    <div class="serv-sec">
+      <h2>Производство профилированного бруса</h2>
+      <p>Предварительно выпиленный брус профилируется на четырёхстороннем станке. Собственный заточной цех позволяет добиться идеально ровной поверхности профилированного бруса.</p>
+      <div class="photo-grid">
+        <div class="photo-cell" style="background:#d8e8d2">🏭<span>Четырёхсторонний станок</span></div>
+        <div class="photo-cell" style="background:#cfd8c8">🪵<span>Профилирование бруса</span></div>
+        <div class="photo-cell" style="background:#d4e0ce">🔧<span>Заточной цех</span></div>
+        <div class="photo-cell" style="background:#c8d4c2">🪵<span>Готовый профилированный брус</span></div>
+        <div class="photo-cell" style="background:#d2dece">📦<span>Укладка в штабель</span></div>
+        <div class="photo-cell" style="background:#ccd8c6">📦<span>Сушка</span></div>
+        <div class="photo-cell" style="background:#d0dcc8">📦<span>Склад бруса</span></div>
+        <div class="photo-cell" style="background:#cad6c4">🚚<span>Отгрузка на объект</span></div>
+      </div>
+    </div>
+    <div class="fb-section">
+      <div class="fb-text"><h2>Нужен материал?</h2><p>Рассчитаем стоимость бревна или бруса для вашего проекта</p></div>
+      <div class="fb-form">
+        <select id="fb-city-pr"><option value="">Выберите город</option><option>Новосибирск</option><option>Томск</option></select>
+        <input type="tel" id="fb-phone-pr" placeholder="+7 (___) ___-__-__"/>
+        <button class="btn-or btn-block" onclick="submitFb('fb-city-pr','fb-phone-pr')">Отправить</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========== PROEKTIROVANIE =========== -->
+<div class="page" id="page-proektirovanie">
+  <div class="bc"><a onclick="go('home')">Главная</a><span>»</span> Услуги <span>»</span> Проектирование и дизайн</div>
+  <div class="mw" style="padding-bottom:50px">
+    <h1 class="page-h1">ПРОЕКТИРОВАНИЕ И ДИЗАЙН</h1>
+    <div class="serv-sec">
+      <h2>Дизайн-проект</h2>
+      <p>С учётом пожеланий клиента, архитектор нашей компании, используя 3D-моделирование, создаст визуальное изображение вашего будущего дома.</p>
+      <div class="photo-grid">
+        <div class="photo-cell" style="background:#d8e8d2">📐<span>3D-вид фасада, вариант 1</span></div>
+        <div class="photo-cell" style="background:#cfd8c8">📐<span>3D-вид фасада, вариант 2</span></div>
+        <div class="photo-cell" style="background:#d4e0ce">📐<span>3D-вид сбоку</span></div>
+        <div class="photo-cell" style="background:#c8d4c2">📐<span>3D-вид сзади</span></div>
+      </div>
+      <div class="photo-grid g3" style="margin-top:10px">
+        <div class="photo-cell pc-wide" style="background:#d8e8d2">📐<span>План этажей с предполагаемой расстановкой мебели — 1 этаж</span></div>
+        <div class="photo-cell pc-wide" style="background:#cfd8c8">📐<span>План этажей с предполагаемой расстановкой мебели — 2 этаж</span></div>
+      </div>
+    </div>
+    <div class="serv-sec">
+      <h2>Проектирование</h2>
+      <p>Использование программы <strong>К3-Коттедж</strong> при проектировании дома позволяет безошибочно создать конструкцию строения с учётом специфики деревянного домостроения (длина бревён, высота ряда, усадка стен и т.д.), а также оптимизировать расход древесины.</p>
+      <h3>Нашему клиенту будут предоставлены:</h3>
+      <div class="doc-item"><div class="doc-num">1</div><div class="doc-img" style="background:#d8e8d2">📐</div><div class="doc-name">План фундамента</div></div>
+      <div class="doc-item"><div class="doc-num">2</div><div class="doc-img" style="background:#cfd8c8">📐</div><div class="doc-name">Карта раскроя бревён</div></div>
+      <div class="doc-item"><div class="doc-num">3</div><div class="doc-img" style="background:#d4e0ce">📐</div><div class="doc-name">Спецификация</div></div>
+      <div class="doc-item"><div class="doc-num">4</div><div class="doc-img" style="background:#c8d4c2">📐</div><div class="doc-name">Аксонометрия</div></div>
+      <div class="doc-item"><div class="doc-num">5</div><div class="doc-img" style="background:#d2dece">📐</div><div class="doc-name">Развёртка по стенам</div></div>
+      <div class="doc-item"><div class="doc-num">6</div><div class="doc-img" style="background:#ccd8c6">📐</div><div class="doc-name">План-схема сборки</div></div>
+    </div>
+    <div class="fb-section">
+      <div class="fb-text"><h2>Нужен проект?</h2><p>Оставьте заявку — обсудим ваш будущий дом бесплатно</p></div>
+      <div class="fb-form">
+        <select id="fb-city-proe"><option value="">Выберите город</option><option>Новосибирск</option><option>Томск</option></select>
+        <input type="tel" id="fb-phone-proe" placeholder="+7 (___) ___-__-__"/>
+        <button class="btn-or btn-block" onclick="submitFb('fb-city-proe','fb-phone-proe')">Отправить</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== FOOTER ======== -->
+<footer class="footer">
+  <div class="footer-top">
+    <div>
+      <div class="ft-logo">РусьСтрой<small>Группа компаний</small></div>
+      <div class="ft-row">📍 630003, г. Новосибирск, ул. Владимировская, 2/1, каб. 205</div>
+      <div class="ft-row">📞 <a href="tel:+79991234567">+7 (999) 123-45-67</a></div>
+      <div class="ft-row">✉️ <a href="mailto:Russtroy54@yandex.ru">Russtroy54@yandex.ru</a></div>
+      <div class="ft-row">🕐 Пн.–Пт. 9:00–19:00</div>
+    </div>
+    <div class="ft-col">
+      <h4>Строительство</h4>
+      <a onclick="go('catalog')">Все проекты</a>
+      <a onclick="go('catalog','дом-бревно')">Дома из бревна</a>
+      <a onclick="go('catalog','дом-брус')">Дома из бруса</a>
+      <a onclick="go('catalog','баня-бревно')">Бани из бревна</a>
+      <a onclick="go('catalog','баня-брус')">Бани из бруса</a>
+      <a onclick="go('fundament')">Фундамент</a>
+      <a onclick="go('sborka')">Сборка сруба</a>
+      <a onclick="go('krovlya')">Кровля</a>
+      <a onclick="go('otdelka')">Отделка</a>
+    </div>
+    <div class="ft-col">
+      <h4>Популярное</h4>
+      <a onclick="go('home')">Главная</a>
+      <a onclick="go('gallery')">Готовые объекты</a>
+      <a onclick="go('about')">О компании</a>
+      <a onclick="go('contacts')">Контакты</a>
+      <a onclick="go('proektirovanie')">Проектирование</a>
+      <a onclick="go('proizvodstvo')">Производство</a>
+    </div>
+    <div class="ft-col">
+      <h4>Каталог проектов</h4>
+      <div class="ft-cat">
+        <span class="ft-cat-num">300</span>
+        <div class="ft-cat-desc">готовых проектов домов и бань</div>
+        <button class="btn-gr btn-block" style="margin-bottom:8px;font-size:13px;padding:9px" onclick="go('catalog')">Смотреть проекты</button>
+        <button class="btn-or btn-block" style="font-size:13px;padding:9px" onclick="goFb()">Бесплатная консультация</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2015–2024 Группа компаний Русь Строй</div>
+    <div>ИП Головачев Геннадий Александрович</div>
+  </div>
+</footer>
+
+<!-- ======================================================
+     JAVASCRIPT
+     ====================================================== -->
+<script>
+/* ===== PROJECTS DATA ===== */
+const PROJECTS=[
+  {id:'d1',name:'Проект Д-1',type:'дом',mat:'бревно',sq:77,fl:2,desc:'Двухэтажный дом из оцилиндрованного бревна диаметром 18 см.'},
+  {id:'d2',name:'Проект Д-2',type:'дом',mat:'бревно',sq:130,fl:2,desc:'Двухэтажный дом из оцилиндрованного бревна диаметром 24 см'},
+  {id:'d3',name:'Проект Д-3',type:'дом',mat:'бревно',sq:106,fl:2,desc:'Двухэтажный дом из оцилиндрованного бревна диаметром 22 см'},
+  {id:'d4',name:'Проект Д-4',type:'дом',mat:'бревно',sq:101,fl:2,desc:'Двухэтажный дом из оцилиндрованного бревна диаметром 22 см'},
+  {id:'d5',name:'Проект Д-5',type:'дом',mat:'бревно',sq:144,fl:2,desc:'Двухэтажный дом из оцилиндрованного бревна диаметром 22 см'},
+  {id:'d6',name:'Проект Д-6',type:'дом',mat:'бревно',sq:75,fl:2,desc:'Дом из оцилиндрованного бревна диаметром 20 см. Мансарда 50 м²'},
+  {id:'d7',name:'Проект Д-7',type:'дом',mat:'бревно',sq:368,fl:2,desc:'Большой двухэтажный дом из оцилиндрованного бревна диаметром 28 см'},
+  {id:'d8',name:'Проект Д-8',type:'дом',mat:'бревно',sq:130,fl:2,desc:'Дом из оцилиндрованного бревна диаметром 26 см'},
+  {id:'d9',name:'Проект Д-9',type:'дом',mat:'бревно',sq:137,fl:1,desc:'Охотничья заимка из оцилиндрованного бревна диаметром 26 см'},
+  {id:'d10',name:'Проект Д-10',type:'дом',mat:'бревно',sq:112,fl:2,desc:'Двухэтажный дом из оцилиндрованного бревна диаметром 24 см'},
+  {id:'d11',name:'Проект Д-11',type:'дом',mat:'бревно',sq:21,fl:1,desc:'Одноэтажный домик из оцилиндрованного бревна диаметром 16 см'},
+  {id:'d12',name:'Проект Д-12',type:'дом',mat:'брус',sq:93,fl:2,desc:'Дом из профилированного бруса сечением 140×140'},
+  {id:'d13',name:'Проект Д-13',type:'дом',mat:'брус',sq:96,fl:2,desc:'Двухэтажный дом из профилированного бруса 140×140'},
+  {id:'d14',name:'Проект Д-14',type:'дом',mat:'бревно',sq:94,fl:2,desc:'Двухэтажный дом из оцилиндрованного бревна диаметром 20 см'},
+  {id:'d15',name:'Проект Д-15',type:'дом',mat:'бревно',sq:88,fl:2,desc:'Двухэтажный дом с террасой из оцилиндрованного бревна диаметром 20 см'},
+  {id:'d16',name:'Проект Д-16',type:'дом',mat:'бревно',sq:150,fl:2,desc:'Дом из оцилиндрованного бревна диаметром 26 см'},
+  {id:'d17',name:'Проект Д-17',type:'дом',mat:'бревно',sq:63,fl:2,desc:'Двухэтажный дом из оцилиндрованного бревна диаметром 20 см'},
+  {id:'d18',name:'Проект Д-18',type:'дом',mat:'бревно',sq:48,fl:2,desc:'Двухэтажный дачный дом из оцилиндрованного бревна диаметром 20 см'},
+  {id:'d19',name:'Проект Д-19',type:'дом',mat:'бревно',sq:111,fl:2,desc:'Двухэтажный дом из оцилиндрованного бревна диаметром 20 см'},
+  {id:'d20',name:'Проект Д-20',type:'дом',mat:'бревно',sq:177,fl:2,desc:'Двухэтажный дом из оцилиндрованного бревна диаметром 28 см'},
+  {id:'d21',name:'Проект Д-21',type:'дом',mat:'бревно',sq:170,fl:2,desc:'Дом из оцилиндрованного бревна диаметром 22 см'},
+  {id:'d22',name:'Проект Д-22',type:'дом',mat:'брус',sq:135,fl:2,desc:'Дом из профилированного бруса сечением 180×180 мм'},
+  {id:'d23',name:'Проект Д-23',type:'дом',mat:'брус',sq:115,fl:2,desc:'Двухэтажный дом из бруса сечением 180×180 мм'},
+  {id:'d24',name:'Проект Д-24',type:'дом',mat:'бревно',sq:135,fl:1,desc:'Одноэтажный дом из оцилиндрованного бревна диаметром 24 см'},
+  {id:'d25',name:'Проект Д-25',type:'дом',mat:'бревно',sq:119,fl:2,desc:'Двухэтажный дом из оцилиндрованного бревна диаметром 24 см'},
+  {id:'d26',name:'Проект Д-26',type:'дом',mat:'бревно',sq:160,fl:2,desc:'Дом из оцилиндрованного бревна диаметром 26 см'},
+  {id:'d27',name:'Проект Д-27',type:'дом',mat:'брус',sq:193,fl:2,desc:'Двухэтажный дом из профилированного бруса сечением 220×180 мм'},
+  {id:'d28',name:'Проект Д-28',type:'дом',mat:'бревно',sq:38,fl:1,desc:'Одноэтажный дом из оцилиндрованного бревна диаметром 16 см'},
+  {id:'d29',name:'Проект Д-29',type:'дом',mat:'брус',sq:198,fl:2,desc:'Дом из профилированного бруса сечением 200×140 мм'},
+  {id:'d30',name:'Проект Д-30',type:'дом',mat:'бревно',sq:124,fl:2,desc:'Дом из оцилиндрованного бревна диаметром 24 см'},
+  {id:'d31',name:'Проект Д-31',type:'дом',mat:'бревно',sq:92,fl:2,desc:'Двухэтажный дом из оцилиндрованного бревна диаметром 24 см'},
+  {id:'d32',name:'Проект Д-32',type:'дом',mat:'бревно',sq:279,fl:2,desc:'Дом из оцилиндрованного бревна диаметром 30 см'},
+  {id:'d33',name:'Проект Д-33',type:'дом',mat:'бревно',sq:94,fl:2,desc:'Двухэтажный дом из оцилиндрованного бревна диаметром 26 см'},
+  {id:'d34',name:'Проект Д-34',type:'дом',mat:'брус',sq:92,fl:2,desc:'Дом из профилированного бруса сечением 220×150 мм'},
+  {id:'d35',name:'Проект Д-35',type:'дом',mat:'бревно',sq:94,fl:2,desc:'Дом из оцилиндрованного бревна диаметром 20 см'},
+  {id:'b1',name:'Проект Б-1',type:'баня',mat:'бревно',sq:63,fl:2,desc:'Двухэтажная баня из оцилиндрованного бревна диаметром 24 см'},
+  {id:'b2',name:'Проект Б-2',type:'баня',mat:'бревно',sq:74,fl:1,desc:'Одноэтажная баня из оцилиндрованного бревна диаметром 22 см'},
+  {id:'b3',name:'Проект Б-3',type:'баня',mat:'бревно',sq:27,fl:1,desc:'Одноэтажная баня из оцилиндрованного бревна диаметром 18 см'},
+  {id:'b4',name:'Проект Б-4',type:'баня',mat:'бревно',sq:65,fl:1,desc:'Одноэтажная баня из оцилиндрованного бревна диаметром 22 см'},
+  {id:'b5',name:'Проект Б-5',type:'баня',mat:'бревно',sq:41,fl:1,desc:'Одноэтажная баня из оцилиндрованного бревна диаметром 18 см'},
+  {id:'b6',name:'Проект Б-6',type:'баня',mat:'бревно',sq:30,fl:1,desc:'Одноэтажная баня из оцилиндрованного бревна диаметром 18 см'},
+  {id:'b7',name:'Проект Б-7',type:'баня',mat:'бревно',sq:57,fl:1,desc:'Одноэтажная баня из бревна диаметром 20 см с большой террасой'},
+  {id:'b8',name:'Проект Б-8',type:'баня',mat:'бревно',sq:48,fl:1,desc:'Одноэтажная баня из оцилиндрованного бревна диаметром 20 см'},
+  {id:'b9',name:'Проект Б-9',type:'баня',mat:'бревно',sq:10,fl:1,desc:'Одноэтажная баня из оцилиндрованного бревна диаметром 16 см'},
+  {id:'b10',name:'Проект Б-10',type:'баня',mat:'бревно',sq:18,fl:1,desc:'Одноэтажная баня с террасой из бревна диаметром 16 см'},
+  {id:'b11',name:'Проект Б-11',type:'баня',mat:'бревно',sq:42,fl:1,desc:'Одноэтажная баня из оцилиндрованного бревна диаметром 20 см'},
+  {id:'b12',name:'Проект Б-12',type:'баня',mat:'брус',sq:95,fl:2,desc:'Двухэтажная баня из профилированного бруса сечением 190×140 мм'},
+  {id:'b13',name:'Проект Б-13',type:'баня',mat:'бревно',sq:39,fl:1,desc:'Одноэтажная баня из оцилиндрованного бревна диаметром 22 см'},
+  {id:'b14',name:'Проект Б-14',type:'баня',mat:'бревно',sq:15,fl:1,desc:'Одноэтажная баня из оцилиндрованного бревна диаметром 16 см'},
+  {id:'b15',name:'Проект Б-15',type:'баня',mat:'бревно',sq:21,fl:1,desc:'Одноэтажная баня из оцилиндрованного бревна диаметром 16 см'},
+  {id:'b16',name:'Проект Б-16',type:'баня',mat:'бревно',sq:43,fl:1,desc:'Одноэтажная баня с террасой из бревна диаметром 20 см'},
+  {id:'b17',name:'Проект Б-17',type:'баня',mat:'брус',sq:24,fl:1,desc:'Одноэтажная баня из профилированного бруса сечением 140×140 мм'},
+  {id:'b18',name:'Проект Б-18',type:'баня',mat:'бревно',sq:25,fl:1,desc:'Одноэтажная баня с террасой из бревна диаметром 20 см'},
+  {id:'b19',name:'Проект Б-19',type:'баня',mat:'брус',sq:30,fl:1,desc:'Одноэтажная баня из профилированного бруса сечением 180×140 мм'},
+  {id:'b20',name:'Проект Б-20',type:'баня',mat:'бревно',sq:27,fl:1,desc:'Одноэтажная баня из оцилиндрованного бревна диаметром 20 см'},
+  {id:'b21',name:'Проект Б-21',type:'баня',mat:'бревно',sq:48,fl:1,desc:'Одноэтажная баня из оцилиндрованного бревна диаметром 22 см'},
+  {id:'b22',name:'Проект Б-22',type:'баня',mat:'брус',sq:46,fl:1,desc:'Одноэтажная баня из профилированного бруса 190×150'},
+  {id:'b23',name:'Проект Б-23',type:'баня',mat:'бревно',sq:34,fl:1,desc:'Одноэтажная баня с террасой из бревна диаметром 20 см'},
+  {id:'b24',name:'Проект Б-24',type:'баня',mat:'брус',sq:104,fl:2,desc:'Двухэтажная баня с балконом из бруса сечением 180×150 мм'},
+  {id:'b25',name:'Проект Б-25',type:'баня',mat:'бревно',sq:23,fl:1,desc:'Одноэтажная баня из оцилиндрованного бревна диаметром 24 см'},
+  {id:'b26',name:'Проект Б-26',type:'баня',mat:'бревно',sq:72,fl:1,desc:'Одноэтажная баня с террасой из бревна диаметром 18 см'},
+  {id:'b27',name:'Проект Б-27',type:'баня',mat:'бревно',sq:47,fl:1,desc:'Одноэтажная баня из оцилиндрованного бревна диаметром 26 см'},
+  {id:'b28',name:'Проект Б-28',type:'баня',mat:'бревно',sq:38,fl:1,desc:'Одноэтажная баня с террасой из бревна диаметром 18 см'},
+  {id:'b29',name:'Проект Б-29',type:'баня',mat:'бревно',sq:84,fl:2,desc:'Баня из оцилиндрованного бревна диаметром 28 см'},
+  {id:'b30',name:'Проект Б-30',type:'баня',mat:'бревно',sq:47,fl:1,desc:'Одноэтажная баня из оцилиндрованного бревна диаметром 22 см'},
+  {id:'b31',name:'Проект Б-31',type:'баня',mat:'брус',sq:52,fl:1,desc:'Одноэтажная баня из профилированного бруса сечением 150×150 мм'},
+  {id:'b32',name:'Проект Б-32',type:'баня',mat:'бревно',sq:32,fl:1,desc:'Одноэтажная баня из оцилиндрованного бревна диаметром 30 см'},
+  {id:'b33',name:'Проект Б-33',type:'баня',mat:'бревно',sq:58,fl:1,desc:'Одноэтажная баня из оцилиндрованного бревна диаметром 24 см'},
+  {id:'b34',name:'Проект Б-34',type:'баня',mat:'брус',sq:61,fl:2,desc:'Баня из профилированного бруса сечением 200×150 мм'},
+  {id:'b35',name:'Проект Б-35',type:'баня',mat:'бревно',sq:66,fl:1,desc:'Одноэтажная баня из оцилиндрованного бревна диаметром 24 см'},
+];
+
+/* ===== COLORS for project cards ===== */
+const CARD_COLORS=[
+  '#d8e8d2','#cdd9e0','#e0d8cc','#d4e4ce','#cce4e0',
+  '#e0d4cc','#d0dce8','#d8d4c8','#cce8d8','#d8cce0',
+];
+function cardColor(i){return CARD_COLORS[i%CARD_COLORS.length]}
+
+/* ===== ROUTING ===== */
+let currentPage='home';
+let catTabState='';
+
+function go(page,filter){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const el=document.getElementById('page-'+page);
+  if(!el){console.warn('Page not found:',page);return;}
+  el.classList.add('active');
+  currentPage=page;
+  window.scrollTo({top:0,behavior:'smooth'});
+  closeMob();
+  if(page==='home') renderPopGrid('дом-брус');
+  if(page==='catalog') renderCatalog(filter||'');
+  if(page==='gallery') initGallery(filter||'all');
+}
+
+/* ===== BURGER ===== */
+function toggleMob(){
+  document.getElementById('brgBtn').classList.toggle('open');
+  document.getElementById('mobNav').classList.toggle('open');
+}
+function closeMob(){
+  document.getElementById('brgBtn').classList.remove('open');
+  document.getElementById('mobNav').classList.remove('open');
+}
+
+/* ===== GO TO FEEDBACK ===== */
+function goFb(){
+  if(currentPage==='home'){
+    document.getElementById('home-fb').scrollIntoView({behavior:'smooth'});
+  } else {
+    const fb=document.querySelector('#page-'+currentPage+' .fb-section');
+    if(fb) fb.scrollIntoView({behavior:'smooth'});
+    else{ go('home'); setTimeout(()=>document.getElementById('home-fb').scrollIntoView({behavior:'smooth'}),400); }
+  }
+}
+
+/* ===== HERO ===== */
+let heroIdx=0;
+const heroTotal=2;
+function heroGo(d){heroSet((heroIdx+d+heroTotal)%heroTotal)}
+function heroSet(i){
+  heroIdx=i;
+  document.getElementById('heroTrack').style.transform=`translateX(-${heroIdx*100}%)`;
+  document.querySelectorAll('.h-dot').forEach((d,j)=>d.classList.toggle('active',j===heroIdx));
+}
+setInterval(()=>heroGo(1),5500);
+
+/* ===== NEWS ===== */
+let newsIdx=0;
+function newsGo(d){
+  const track=document.getElementById('newsTrack');
+  const cards=track.querySelectorAll('.news-card');
+  const visible=window.innerWidth<768?1:3;
+  const max=Math.max(0,cards.length-visible);
+  newsIdx=Math.max(0,Math.min(max,newsIdx+d));
+  const w=cards[0].getBoundingClientRect().width+20;
+  track.style.transform=`translateX(-${newsIdx*w}px)`;
+}
+
+/* ===== POP PROJECTS ===== */
+function renderPopGrid(filter){
+  const grid=document.getElementById('popGrid');
+  if(!grid) return;
+  let sub;
+  if(filter==='дом-брус') sub=PROJECTS.filter(p=>p.type==='дом'&&p.mat==='брус').slice(0,4);
+  else if(filter==='дом-бревно') sub=PROJECTS.filter(p=>p.type==='дом'&&p.mat==='бревно').slice(0,4);
+  else if(filter==='баня-бревно') sub=PROJECTS.filter(p=>p.type==='баня'&&p.mat==='бревно').slice(0,4);
+  else if(filter==='баня-брус') sub=PROJECTS.filter(p=>p.type==='баня'&&p.mat==='брус').slice(0,4);
+  else sub=PROJECTS.slice(0,4);
+  grid.innerHTML=sub.map((p,i)=>`
+    <div class="proj-card" onclick="openProject('${p.id}')">
+      <div class="proj-img" style="background:${cardColor(i)}">🏠<div style="font-size:11px;color:#555">${p.name}</div></div>
+      <div class="proj-body">
+        <div class="proj-name">${p.name}</div>
+        <div class="proj-meta"><span>📐 ${p.sq} м²</span><span>🏠 ${p.fl} эт.</span></div>
+        <div class="proj-desc">${p.desc}</div>
+        <div class="proj-price">Цена: По запросу</div>
+        <button class="proj-btn">Подробнее</button>
+      </div>
+    </div>`).join('');
+}
+function popFilter(f,btn){
+  document.querySelectorAll('.pop-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderPopGrid(f);
+}
+
+/* ===== CATALOG ===== */
+function renderCatalog(preFilter){
+  // Полный сброс всех фильтров перед применением нового
+  catTabState='';
+  document.querySelector('input[name="ftype"][value=""]').checked=true;
+  document.querySelectorAll('input[name="fmat"],input[name="fetazh"],input[name="fsq"]').forEach(c=>c.checked=false);
+  document.querySelectorAll('.cat-tab').forEach((b,i)=>b.classList.toggle('active',i===0));
+
+  if(preFilter){
+    // Определяем тип (дом/баня)
+    const isBanya=preFilter.startsWith('баня');
+    const typeName=isBanya?'баня':'дом';
+    catTabState=typeName;
+    const typeEl=document.querySelector(`input[name="ftype"][value="${typeName}"]`);
+    if(typeEl) typeEl.checked=true;
+
+    // Определяем материал (бревно/брус) — только если он явно указан
+    if(preFilter.endsWith('бревно')){
+      const matEl=document.querySelector('input[name="fmat"][value="бревно"]');
+      if(matEl) matEl.checked=true;
+    } else if(preFilter.endsWith('брус')){
+      const matEl=document.querySelector('input[name="fmat"][value="брус"]');
+      if(matEl) matEl.checked=true;
+    }
+
+    // Синхронизируем вкладки-кнопки
+    document.querySelectorAll('.cat-tab').forEach(b=>b.classList.remove('active'));
+    if(isBanya) document.getElementById('ctBanya').classList.add('active');
+    else document.getElementById('ctDom').classList.add('active');
+  }
+  applyFilter();
+}
+
+function catTab(type,btn){
+  catTabState=type;
+  document.querySelectorAll('.cat-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  // Sync radio
+  const r=document.querySelector(`input[name="ftype"][value="${type}"]`);
+  if(r) r.checked=true;
+  applyFilter();
+}
+
+function applyFilter(){
+  const matChecks=[...document.querySelectorAll('input[name="fmat"]:checked')].map(c=>c.value);
+  const flChecks=[...document.querySelectorAll('input[name="fetazh"]:checked')].map(c=>+c.value);
+  const sqChecks=[...document.querySelectorAll('input[name="fsq"]:checked')].map(c=>c.value);
+
+  let res=PROJECTS;
+  if(catTabState) res=res.filter(p=>p.type===catTabState);
+  if(matChecks.length) res=res.filter(p=>matChecks.includes(p.mat));
+  if(flChecks.length) res=res.filter(p=>flChecks.includes(p.fl));
+  if(sqChecks.length) res=res.filter(p=>sqChecks.some(r=>{
+    const[a,b]=r.split('-').map(Number);
+    return p.sq>=a&&p.sq<=b;
+  }));
+
+  const grid=document.getElementById('catGrid');
+  const countEl=document.getElementById('catCount');
+  if(!grid) return;
+  countEl.textContent=`Найдено: ${res.length}`;
+  if(!res.length){
+    grid.innerHTML='<div class="no-results">Проекты не найдены. Попробуйте изменить фильтры.</div>';
+    return;
+  }
+  grid.innerHTML=res.map((p,i)=>`
+    <div class="cat-card" onclick="openProject('${p.id}')">
+      <div class="cat-img" style="background:${cardColor(i)}">🏠<div style="font-size:11px;color:#555;margin-top:3px">${p.name}</div></div>
+      <div class="cat-body">
+        <div class="cat-name">${p.name}</div>
+        <div class="cat-meta">
+          <span>📐 ${p.sq} м²</span>
+          <span>🏠 ${p.fl} эт.</span>
+          <span>${p.mat==='брус'?'🪵 Брус':'🌲 Бревно'}</span>
+        </div>
+        <div class="cat-desc">${p.desc}</div>
+        <div class="cat-price">Цена: По запросу</div>
+        <button class="cat-btn">Подробнее</button>
+      </div>
+    </div>`).join('');
+}
+
+function resetFilter(){
+  document.querySelector('input[name="ftype"][value=""]').checked=true;
+  document.querySelectorAll('input[name="fmat"],input[name="fetazh"],input[name="fsq"]').forEach(c=>c.checked=false);
+  catTabState='';
+  document.querySelectorAll('.cat-tab').forEach((b,i)=>b.classList.toggle('active',i===0));
+  applyFilter();
+}
+
+/* ===== PROJECT DETAIL ===== */
+let projIdx=0;
+function openProject(id){
+  const p=PROJECTS.find(x=>x.id===id);
+  if(!p) return;
+  document.getElementById('proj-bc-name').textContent=p.name;
+  document.getElementById('proj-title').textContent=
+    `${p.name} — ${p.type==='баня'?'Баня':'Дом'} из ${p.mat==='брус'?'профилированного бруса':'оцилиндрованного бревна'}`;
+  document.getElementById('pd-sq').textContent=p.sq+' м²';
+  document.getElementById('pd-fl').textContent=p.fl+(p.fl===1?' этаж':' этажа');
+  document.getElementById('pd-desc').textContent=p.desc;
+  // Reset slider & tabs
+  projIdx=0;
+  document.getElementById('projSliderTrack').style.transform='translateX(0)';
+  document.querySelectorAll('#projDots .sdot').forEach((d,i)=>d.classList.toggle('active',i===0));
+  document.querySelectorAll('#projThumbs .thumb').forEach((d,i)=>d.classList.toggle('active',i===0));
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',i===0));
+  document.querySelectorAll('.tab-pane').forEach((p,i)=>p.classList.toggle('active',i===0));
+  document.querySelectorAll('.gal-tab').forEach((t,i)=>t.classList.toggle('active',i===0));
+  go('project');
+}
+
+function projGo(d){
+  projIdx=Math.max(0,Math.min(4,projIdx+d));
+  document.getElementById('projSliderTrack').style.transform=`translateX(-${projIdx*100}%)`;
+  document.querySelectorAll('#projDots .sdot').forEach((d,i)=>d.classList.toggle('active',i===projIdx));
+  document.querySelectorAll('#projThumbs .thumb').forEach((d,i)=>d.classList.toggle('active',i===projIdx));
+}
+function projJump(i){projGo(i-projIdx)}
+
+function galTabClick(type,btn){
+  document.querySelectorAll('.gal-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  projJump(type==='plan'?3:0);
+}
+
+function tabSwitch(id,btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+
+/* ===== GALLERY ===== */
+const GAL_CATS=['doma','doma','doma','doma','bani','bani','bani','bani','prochee','prochee',
+  'doma','doma','doma','doma','bani','bani','bani','bani','doma','doma',
+  'doma','bani','bani','prochee','doma','doma','bani','bani','doma','doma',
+  'bani','doma','doma','bani','bani','doma','prochee','doma','bani','bani',
+  'doma','doma','bani','bani','doma','doma','doma','bani','doma','bani',
+  'doma','bani','bani','prochee'];
+const GAL_COLORS=['#d8e8d2','#cdd9e0','#e0d8cc','#d8ddd2','#cce0e0','#e0d4cc','#d0dce8','#d8d4c8'];
+let galCat='all', galVisible=20;
+
+function initGallery(cat){
+  galCat=cat;
+  galVisible=20;
+  document.querySelectorAll('.gal-fbtn').forEach(b=>{
+    const oc=b.getAttribute('onclick')||'';
+    b.classList.toggle('active',oc.includes(`'${cat}'`));
+  });
+  renderGallery();
+}
+function galFilter(cat,btn){
+  galCat=cat; galVisible=20;
+  document.querySelectorAll('.gal-fbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGallery();
+}
+function renderGallery(){
+  const all=GAL_CATS.map((c,i)=>({i,c}));
+  const filtered=galCat==='all'?all:all.filter(x=>x.c===galCat);
+  const shown=filtered.slice(0,galVisible);
+  const grid=document.getElementById('galleryGrid');
+  const lab={doma:'🏠 Дом',bani:'🛁 Баня',prochee:'🏗️ Прочее'};
+  grid.innerHTML=shown.map(({i,c})=>
+    `<div class="gal-item" style="background:${GAL_COLORS[i%GAL_COLORS.length]}">
+      <div>${lab[c]||'📸'}</div>
+      <div style="font-size:11px;font-weight:400;color:var(--gray-text)">Объект #${i+1}</div>
+    </div>`).join('');
+  const btn=document.getElementById('showMoreBtn');
+  btn.style.display=shown.length<filtered.length?'block':'none';
+}
+function galShowMore(){galVisible+=16;renderGallery()}
+
+/* ===== FORM ===== */
+function submitFb(cityId,phoneId){
+  const city=document.getElementById(cityId)?.value||'';
+  const phone=document.getElementById(phoneId)?.value?.trim()||'';
+  if(!city){alert('Пожалуйста, выберите город.');return;}
+  if(!phone){alert('Пожалуйста, введите номер телефона.');return;}
+  alert(`✅ Форма отправлена (демо)\n\nГород: ${city}\nТелефон: ${phone}\n\nСпасибо! Мы свяжемся с вами в ближайшее время.`);
+}
+
+/* ===== INIT ===== */
+document.addEventListener('DOMContentLoaded',()=>{
+  renderPopGrid('дом-брус');
+  renderCatalog('');
+  initGallery('all');
+});
+</script>
+</body>
+</html>
