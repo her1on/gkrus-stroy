@@ -7,8 +7,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'PT Sans',sans-serif;font-size:15px;color:#333;background:#fff}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'PT Sans',sans-serif;font-size:15px;color:#333;background:#fff;overflow-x:hidden}
 a{text-decoration:none;color:inherit;cursor:pointer}
 ul{list-style:none}
 button{font-family:inherit;cursor:pointer}
@@ -301,6 +301,10 @@ input,select,textarea{font-family:inherit}
 .wtbl tr:nth-child(even) td{background:var(--gray-bg)}
 .warn-box{display:flex;align-items:flex-start;gap:12px;background:#fff8e1;border:1px solid #ffe082;border-radius:6px;padding:14px 16px;margin-bottom:16px;font-size:13px;color:#555;line-height:1.5}
 .ptag{color:var(--orange);font-weight:700}
+/* TABLE SCROLL WRAPPER */
+.wtbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:14px;border-radius:4px}
+.wtbl-wrap .wtbl{margin-bottom:0;min-width:520px}
+
 
 /* =====================
    GALLERY
@@ -373,11 +377,14 @@ input,select,textarea{font-family:inherit}
 /* =====================
    RESPONSIVE
    ===================== */
+/* =====================
+   TABLET 1024px
+   ===================== */
 @media(max-width:1024px){
   .proj-grid{grid-template-columns:repeat(2,1fr)}
   .why-grid{grid-template-columns:repeat(2,1fr)}
   .art-grid{grid-template-columns:repeat(2,1fr)}
-  .footer-top{grid-template-columns:1fr 1fr}
+  .footer-top{grid-template-columns:1fr 1fr;gap:24px}
   .stats-in{grid-template-columns:repeat(2,1fr)}
   .steps{grid-template-columns:repeat(3,1fr);gap:20px}
   .step:not(:last-child)::after{display:none}
@@ -392,35 +399,221 @@ input,select,textarea{font-family:inherit}
   .pc-wide{grid-column:span 1}
   .about-strip-in{grid-template-columns:1fr}
 }
+
+/* =====================
+   MOBILE 768px
+   ===================== */
 @media(max-width:768px){
+  /* Header */
   .nav{display:none}
   .burger{display:flex}
-  .hero{height:400px}
-  .hero-title{font-size:32px}
-  .hero-sub{font-size:15px}
-  .hero-content{padding:0 22px}
-  .proj-grid{grid-template-columns:1fr}
-  .news-card{min-width:100%}
-  .why-grid{grid-template-columns:1fr}
-  .art-grid{grid-template-columns:1fr}
+  .header-in{height:60px}
+  .logo-name{font-size:18px}
+  .logo-sub{display:none}
+
+  /* Topbar */
   .topbar-right{display:none}
-  .fb-section{flex-direction:column;padding:24px 18px}
-  .footer-top{grid-template-columns:1fr;gap:20px}
-  .gallery-grid{grid-template-columns:repeat(2,1fr)}
-  .photo-grid{grid-template-columns:repeat(2,1fr)}
-  .stats-in{grid-template-columns:repeat(2,1fr)}
-  .steps{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:480px){
-  .hero{height:320px}
-  .hero-title{font-size:24px}
-  .cat-grid{grid-template-columns:1fr}
-  .gallery-grid{grid-template-columns:1fr}
-  .photo-grid{grid-template-columns:1fr}
+  .topbar-left{gap:10px;flex-wrap:wrap}
+  .topbar-in{padding:6px 14px}
+
+  /* Hero */
+  .hero{height:auto;min-height:300px}
+  .hero-content{padding:30px 18px}
+  .hero-title{font-size:26px;line-height:1.2}
+  .hero-sub{font-size:14px;margin-bottom:22px}
+  .hero-tag{font-size:11px;margin-bottom:12px}
+  .h-btn-main,.h-btn-sec{padding:12px 20px;font-size:14px}
+  .h-prev,.h-next{width:36px;height:36px;font-size:14px}
+  .h-prev{left:8px}
+  .h-next{right:8px}
+
+  /* Stats */
+  .stats-in{grid-template-columns:repeat(2,1fr);gap:0}
+  .stat{padding:14px 8px}
+  .stat-num{font-size:24px}
+  .stat-lbl{font-size:11px}
+
+  /* Pop projects */
+  .pop-sect{padding:36px 0 16px}
+  .pop-tabs{gap:6px;padding:0 14px}
+  .pop-tab{padding:7px 14px;font-size:13px}
+  .proj-grid{grid-template-columns:1fr;gap:14px}
+
+  /* Howto */
+  .howto{padding:40px 0}
+  .howto-sub{font-size:13px;margin-bottom:24px;padding:0 14px}
+  .steps{grid-template-columns:repeat(2,1fr);gap:20px}
+  .step-num{width:58px;height:58px;font-size:22px}
+  .step-ico{font-size:22px}
+  .step-name{font-size:13px}
+
+  /* News */
+  .news-sect{padding:40px 0}
+  .news-card{min-width:calc(100% - 0px)}
+  .news-img-ph{height:140px}
+
+  /* Why us */
+  .why-sect{padding:40px 0}
+  .why-grid{grid-template-columns:1fr;gap:14px}
+  .why-card{padding:20px 16px}
+
+  /* Articles */
+  .art-sect{padding:40px 0}
+  .art-grid{grid-template-columns:1fr;gap:12px}
+
+  /* About strip */
+  .about-strip{padding:36px 0}
+  .about-strip-in{grid-template-columns:1fr;gap:24px}
+  .about-img-ph{height:200px;font-size:40px}
+
+  /* Feedback */
+  .fb-section{flex-direction:column;padding:22px 16px;gap:20px}
+  .fb-text h2{font-size:18px}
+
+  /* Section titles */
+  .sec-title{font-size:22px;margin-bottom:20px}
+
+  /* Filter */
+  .filter-box{padding:16px}
+  .cat-top{flex-direction:column;align-items:flex-start;gap:10px}
+  .cat-tabs{flex-wrap:wrap;gap:6px}
+  .cat-grid{grid-template-columns:1fr;gap:14px}
+  .cat-count{font-size:13px}
+
+  /* Project detail */
+  .proj-layout{grid-template-columns:1fr;gap:20px}
   .tabs-nav{flex-wrap:wrap}
   .tab-btn{padding:8px 12px;font-size:12px}
-  .contacts-grid{grid-template-columns:1fr}
+  .wtbl{font-size:13px}
+  .wtbl th,.wtbl td{padding:8px 10px}
+  .price-val{font-size:24px}
+
+  /* Gallery */
+  .gallery-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .gal-filter{gap:6px}
+  .gal-fbtn{padding:7px 14px;font-size:13px}
+
+  /* Photo grids (service pages) */
+  .photo-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .photo-cell{font-size:11px;padding:6px}
+
+  /* About */
+  .about-layout{grid-template-columns:1fr;gap:20px}
+  .about-sidebar{padding:20px 16px}
+
+  /* Contacts */
+  .contacts-grid{grid-template-columns:1fr;gap:18px}
+  .cont-block{padding:20px 16px}
+  .map-ph{height:200px;font-size:13px}
+
+  /* Footer */
+  .footer-top{grid-template-columns:1fr;gap:20px;padding:30px 16px 20px}
+  .ft-logo{font-size:18px;margin-bottom:12px}
+  .footer-bottom{flex-direction:column;gap:4px;padding:12px 16px;font-size:12px}
+
+  /* Breadcrumbs */
+  .bc{padding:10px 14px 4px;font-size:12px}
+
+  /* Page h1 */
+  .page-h1{font-size:20px;margin-bottom:18px}
+
+  /* Service pages */
+  .serv-intro{font-size:14px}
+  .serv-sec h2{font-size:17px}
+  .serv-sec p{font-size:13px}
+  .doc-item{padding:11px 12px;gap:10px}
+  .doc-img{width:56px;height:42px}
+
+  /* Slider thumbs */
+  .sl-thumbs{gap:5px}
+  .thumb{font-size:9px}
+
+  /* mw padding */
+  .mw{padding:0 14px}
+}
+
+/* =====================
+   MOBILE SMALL 480px
+   ===================== */
+@media(max-width:480px){
+  /* Hero */
+  .hero{min-height:260px}
+  .hero-title{font-size:20px}
+  .hero-sub{font-size:13px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .hero-btns{flex-direction:column;gap:10px}
+  .h-btn-main,.h-btn-sec{width:100%;text-align:center}
+
+  /* Stats: 1 column */
+  .stats-in{grid-template-columns:1fr 1fr}
+  .stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}
+  .stat:nth-child(odd){border-right:1px solid rgba(255,255,255,.1)}
+
+  /* Steps: 1 column */
+  .steps{grid-template-columns:1fr 1fr}
+
+  /* Grids: 1 column */
   .proj-grid{grid-template-columns:1fr}
+  .cat-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .photo-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .art-grid{grid-template-columns:1fr}
+
+  /* Tabs - scrollable */
+  .tabs-nav{overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px;-webkit-overflow-scrolling:touch}
+  .tabs-nav::-webkit-scrollbar{height:2px}
+  .tabs-nav::-webkit-scrollbar-thumb{background:var(--green-light)}
+  .tab-btn{white-space:nowrap;padding:8px 11px;font-size:12px;flex-shrink:0}
+
+  /* Pop tabs - scrollable */
+  .pop-tabs{overflow-x:auto;flex-wrap:nowrap;padding:0 14px 8px;justify-content:flex-start;-webkit-overflow-scrolling:touch}
+  .pop-tab{white-space:nowrap;flex-shrink:0}
+
+  /* Cat tabs */
+  .cat-tabs{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+  .cat-tab{white-space:nowrap;flex-shrink:0}
+
+  /* Header */
+  .logo-name{font-size:16px}
+  .logo-mark{width:36px;height:36px}
+  .logo-mark svg{width:20px;height:20px}
+  .header-in{padding:0 14px;height:56px}
+
+  /* Topbar */
+  .topbar-left{gap:8px}
+  .topbar-in{padding:5px 14px}
+  .topbar a{font-size:12px}
+
+  /* Tables - horizontal scroll */
+  .wtbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .wtbl{min-width:500px}
+
+  /* Footer */
+  .footer-top{padding:24px 14px 16px}
+
+  /* Project sidebar */
+  .proj-side{padding:18px 14px}
+  .det-val{font-size:18px}
+
+  /* Gallery filter */
+  .gal-filter{overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+  .gal-fbtn{white-space:nowrap;flex-shrink:0}
+  .gallery-grid{gap:6px}
+
+  /* Section title */
+  .sec-title{font-size:20px}
+  .page-h1{font-size:18px}
+
+  /* About sidebar stacked */
+  .astat-num{font-size:26px}
+
+  /* Contacts */
+  .cont-val{font-size:14px}
+  .cont-icon{width:36px;height:36px;font-size:16px}
+
+  /* Service docs */
+  .doc-item{padding:10px}
+  .doc-num{width:30px;height:30px;font-size:13px}
 }
 </style>
 </head>
@@ -852,7 +1045,7 @@ input,select,textarea{font-family:inherit}
       </ul>
     </div>
     <div class="tab-pane" id="tp2">
-      <table class="wtbl">
+      <div class="wtbl-wrap"><table class="wtbl">
         <thead><tr><th>Вид работ</th><th>Что входит в стоимость</th></tr></thead>
         <tbody>
           <tr><td>Ленточный фундамент</td><td>Разметка на участке · Выборка грунта · Отсыпка ПГС · Установка армированного каркаса · Деревянная опалубка · Заливка бетоном М200</td></tr>
@@ -861,11 +1054,11 @@ input,select,textarea{font-family:inherit}
           <tr><td>Железобетонные сваи</td><td>Экспресс геология · Доставка свай · Установка свай 150×150 мм, длиной 3000 мм</td></tr>
           <tr><td>Мягкая черепица</td><td>Укладка ОСБ плиты · Герметизация швов мастикой · Настил подкладочного ковра · Укладка черепицы</td></tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
     <div class="tab-pane" id="tp3">
       <div class="warn-box"><span style="font-size:20px">⚠️</span><span>Стоимость отделочных работ рассчитывается индивидуально. В стоимость базовой комплектации услуги по отделке не входят.</span></div>
-      <table class="wtbl">
+      <div class="wtbl-wrap"><table class="wtbl">
         <thead><tr><th colspan="2">Отделочные работы для домов из бревна:</th></tr></thead>
         <tbody>
           <tr><td colspan="2">Прокладка коммуникаций (вода, канализация)</td></tr>
@@ -882,10 +1075,10 @@ input,select,textarea{font-family:inherit}
           <tr><td colspan="2">Установка входной и межэтажной лестницы</td></tr>
           <tr><td colspan="2">Отмостка</td></tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
     <div class="tab-pane" id="tp4">
-      <table class="wtbl">
+      <div class="wtbl-wrap"><table class="wtbl">
         <thead><tr><th>Материал</th><th>Профиль</th><th>Сечение / диаметр</th><th>Стоимость</th></tr></thead>
         <tbody>
           <tr><td>Бревно оцилиндрованное</td><td>Круглый</td><td>200 мм</td><td class="ptag">По запросу</td></tr>
@@ -896,7 +1089,7 @@ input,select,textarea{font-family:inherit}
           <tr><td>Брус профилированный</td><td>Профилированный</td><td>140×190 мм</td><td class="ptag">По запросу</td></tr>
           <tr><td>Брус профилированный</td><td>Профилированный</td><td>180×200 мм</td><td class="ptag">По запросу</td></tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
 
     <div class="fb-section" style="margin-top:36px">
@@ -1497,18 +1690,33 @@ function popFilter(f,btn){
 
 /* ===== CATALOG ===== */
 function renderCatalog(preFilter){
+  // Полный сброс всех фильтров перед применением нового
   catTabState='';
-  // Apply pre-filter from menu
+  document.querySelector('input[name="ftype"][value=""]').checked=true;
+  document.querySelectorAll('input[name="fmat"],input[name="fetazh"],input[name="fsq"]').forEach(c=>c.checked=false);
+  document.querySelectorAll('.cat-tab').forEach((b,i)=>b.classList.toggle('active',i===0));
+
   if(preFilter){
-    const typeEl=document.querySelector(`input[name="ftype"][value="${preFilter.startsWith('баня')?'баня':'дом'}"]`);
-    if(typeEl){ typeEl.checked=true; catTabState=preFilter.startsWith('баня')?'баня':'дом'; }
-    const matEl=document.querySelector(`input[name="fmat"][value="${preFilter.endsWith('бревно')?'бревно':'брус'}"]`);
-    if(matEl) matEl.checked=true;
-    // Sync tabs
+    // Определяем тип (дом/баня)
+    const isBanya=preFilter.startsWith('баня');
+    const typeName=isBanya?'баня':'дом';
+    catTabState=typeName;
+    const typeEl=document.querySelector(`input[name="ftype"][value="${typeName}"]`);
+    if(typeEl) typeEl.checked=true;
+
+    // Определяем материал (бревно/брус) — только если он явно указан
+    if(preFilter.endsWith('бревно')){
+      const matEl=document.querySelector('input[name="fmat"][value="бревно"]');
+      if(matEl) matEl.checked=true;
+    } else if(preFilter.endsWith('брус')){
+      const matEl=document.querySelector('input[name="fmat"][value="брус"]');
+      if(matEl) matEl.checked=true;
+    }
+
+    // Синхронизируем вкладки-кнопки
     document.querySelectorAll('.cat-tab').forEach(b=>b.classList.remove('active'));
-    if(preFilter.startsWith('баня')) document.getElementById('ctBanya').classList.add('active');
-    else if(preFilter.startsWith('дом')) document.getElementById('ctDom').classList.add('active');
-    else document.getElementById('ctAll').classList.add('active');
+    if(isBanya) document.getElementById('ctBanya').classList.add('active');
+    else document.getElementById('ctDom').classList.add('active');
   }
   applyFilter();
 }
