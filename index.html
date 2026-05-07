@@ -302,6 +302,20 @@ input,select,textarea{font-family:inherit}
 .warn-box{display:flex;align-items:flex-start;gap:12px;background:#fff8e1;border:1px solid #ffe082;border-radius:6px;padding:14px 16px;margin-bottom:16px;font-size:13px;color:#555;line-height:1.5}
 .ptag{color:var(--orange);font-weight:700}
 /* TABLE SCROLL WRAPPER */
+ 
+/* Project card images */
+.cat-img img, .proj-img img {
+  width:100%; height:100%; object-fit:cover; display:block;
+  transition: transform .3s ease;
+}
+.cat-card:hover .cat-img img, .proj-card:hover .proj-img img {
+  transform: scale(1.04);
+}
+.cat-img, .proj-img { overflow:hidden; }
+.slide img { width:100%; height:100%; object-fit:cover; display:block; }
+.gal-item img { width:100%; height:100%; object-fit:cover; display:block; }
+.news-img-ph img { width:100%; height:100%; object-fit:cover; display:block; }
+ 
 .wtbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:14px;border-radius:4px}
 .wtbl-wrap .wtbl{margin-bottom:0;min-width:520px}
  
@@ -585,7 +599,21 @@ input,select,textarea{font-family:inherit}
   .topbar a{font-size:12px}
  
   /* Tables - horizontal scroll */
-  .wtbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  
+/* Project card images */
+.cat-img img, .proj-img img {
+  width:100%; height:100%; object-fit:cover; display:block;
+  transition: transform .3s ease;
+}
+.cat-card:hover .cat-img img, .proj-card:hover .proj-img img {
+  transform: scale(1.04);
+}
+.cat-img, .proj-img { overflow:hidden; }
+.slide img { width:100%; height:100%; object-fit:cover; display:block; }
+.gal-item img { width:100%; height:100%; object-fit:cover; display:block; }
+.news-img-ph img { width:100%; height:100%; object-fit:cover; display:block; }
+ 
+.wtbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
   .wtbl{min-width:500px}
  
   /* Footer */
@@ -638,9 +666,7 @@ input,select,textarea{font-family:inherit}
 <header class="header">
   <div class="header-in">
     <div class="logo" onclick="go('home')">
-      <div class="logo-mark">
-        <svg viewBox="0 0 30 30"><path d="M15 3L2 13h3v14h8v-8h4v8h8V13h3z"/></svg>
-      </div>
+      <div class="logo-mark" style="background:none;padding:0;width:42px;height:42px;overflow:hidden;border-radius:8px"><img src="https://gkrus-stroy.ru/upload/photos/665_3_4_Sjt0Bv9MfQ4px4Kc.png" alt="РусьСтрой" style="width:100%;height:100%;object-fit:cover"/></div>
       <div>
         <div class="logo-name">РусьСтрой</div>
         <div class="logo-sub">Группа компаний</div>
@@ -790,14 +816,14 @@ input,select,textarea{font-family:inherit}
       <h2 class="sec-title">Наши новости</h2>
       <div class="news-slider-wrap">
         <div class="news-track" id="newsTrack">
-          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#d8e8d2">🏠 Объект 2024</div><div class="news-body"><div class="news-date">25.10.2024</div><div class="news-title-t">Завершили строительство дома из профилированного бруса в Новосибирской области</div><div class="news-excerpt">Выполнен монтаж дома из профилированного бруса 190х140 в дер. Ерестная Новосибирской области. Наружняя и внутренняя отделка...</div></div></div>
-          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#cdd9e0">🌲 Объект 2024</div><div class="news-body"><div class="news-date">23.10.2024</div><div class="news-title-t">Завершили строительство дома из оцилиндрованного бревна 220 мм в Новосибирской области</div><div class="news-excerpt">Изготовлен домокомплект площадью 240 кв.м из оцилиндрованного бревна диаметром 220 мм...</div></div></div>
-          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#e0d8cc">🏡 Объект 2024</div><div class="news-body"><div class="news-date">15.01.2024</div><div class="news-title-t">Завершили строительство дома из профилированного бруса 190х190 в Новосибирской области</div><div class="news-excerpt">Дом из профилированного бруса 190х190 в Новосибирской области, пос. Рыбачий...</div></div></div>
-          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#d8e8d2">🏠 Объект 2020</div><div class="news-body"><div class="news-date">21.08.2020</div><div class="news-title-t">Завершили строительство дома в Новосибирске площадью 100 м²</div><div class="news-excerpt">Дом площадью 100 м² из профилированного бруса 190/140...</div></div></div>
-          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#cdd9e0">🏡 Объект 2020</div><div class="news-body"><div class="news-date">01.07.2020</div><div class="news-title-t">Завершили строительство дома в Томске площадью 125 м²</div><div class="news-excerpt">Дом площадью 125 м² из профилированного бруса 190/140 в Томске...</div></div></div>
-          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#e0d8d2">🛁 Объект 2020</div><div class="news-body"><div class="news-date">13.06.2020</div><div class="news-title-t">Завершили строительство бани в Томске площадью 50 м²</div><div class="news-excerpt">Баня площадью 50 м² из профилированного бруса 190/140 в Томске...</div></div></div>
-          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#d8e8d2">🌲 Объект 2020</div><div class="news-body"><div class="news-date">08.03.2020</div><div class="news-title-t">Завершили строительство дома 130 м² из оцилиндрованного бревна</div><div class="news-excerpt">Дом площадью 130 м² из оцилиндрованного бревна диаметром 24 см в Новосибирске...</div></div></div>
-          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#cdd9e0">🏗️ Объект 2019</div><div class="news-body"><div class="news-date">20.03.2019</div><div class="news-title-t">Завершаем строительство дома из оцилиндрованного бревна Д280мм в пос. Кольцово</div><div class="news-excerpt">Строительство дома из бревна диаметром 280 мм в Новосибирской области...</div></div></div>
+          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#d8e8d2;padding:0;overflow:hidden"><img src="https://gkrus-stroy.ru/upload/photos/997_3_4_aYdn8RKjFePZpI07.jpg" alt="Новость 1" style="width:100%;height:100%;object-fit:cover" loading="lazy" onerror="this.parentNode.style.display='flex';this.parentNode.style.alignItems='center';this.parentNode.style.justifyContent='center';this.remove();this.parentNode.textContent='🏠 Объект 2024'"></div><div class="news-body"><div class="news-date">25.10.2024</div><div class="news-title-t">Завершили строительство дома из профилированного бруса в Новосибирской области</div><div class="news-excerpt">Выполнен монтаж дома из профилированного бруса 190х140 в дер. Ерестная Новосибирской области. Наружняя и внутренняя отделка...</div></div></div>
+          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#cdd9e0;padding:0;overflow:hidden"><img src="https://gkrus-stroy.ru/upload/photos/997_3_4_LR2hiRYDClSOabLi.jpg" alt="" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div><div class="news-body"><div class="news-date">23.10.2024</div><div class="news-title-t">Завершили строительство дома из оцилиндрованного бревна 220 мм в Новосибирской области</div><div class="news-excerpt">Изготовлен домокомплект площадью 240 кв.м из оцилиндрованного бревна диаметром 220 мм...</div></div></div>
+          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#e0d8cc;padding:0;overflow:hidden"><img src="https://gkrus-stroy.ru/upload/photos/676_3_4_MigZGLgd2ObOigss.jpg" alt="" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div><div class="news-body"><div class="news-date">15.01.2024</div><div class="news-title-t">Завершили строительство дома из профилированного бруса 190х190 в Новосибирской области</div><div class="news-excerpt">Дом из профилированного бруса 190х190 в Новосибирской области, пос. Рыбачий...</div></div></div>
+          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#d8e8d2;padding:0;overflow:hidden"><img src="https://gkrus-stroy.ru/upload/photos/676_3_4_gu4dpobSQu0ugF1G.jpg" alt="Новость 4" style="width:100%;height:100%;object-fit:cover" loading="lazy" onerror="this.parentNode.style.display='flex';this.parentNode.style.alignItems='center';this.parentNode.style.justifyContent='center';this.remove();this.parentNode.textContent='🏠 Объект 2020'"></div><div class="news-body"><div class="news-date">21.08.2020</div><div class="news-title-t">Завершили строительство дома в Новосибирске площадью 100 м²</div><div class="news-excerpt">Дом площадью 100 м² из профилированного бруса 190/140...</div></div></div>
+          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#cdd9e0;padding:0;overflow:hidden"><img src="https://gkrus-stroy.ru/upload/photos/676_3_4_rnLnnzMqDEaM9Xbo.jpg" alt="" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div><div class="news-body"><div class="news-date">01.07.2020</div><div class="news-title-t">Завершили строительство дома в Томске площадью 125 м²</div><div class="news-excerpt">Дом площадью 125 м² из профилированного бруса 190/140 в Томске...</div></div></div>
+          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#e0d8d2;padding:0;overflow:hidden"><img src="https://gkrus-stroy.ru/upload/photos/676_3_4_fT3DvoscpSN1lhps.jpg" alt="" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div><div class="news-body"><div class="news-date">13.06.2020</div><div class="news-title-t">Завершили строительство бани в Томске площадью 50 м²</div><div class="news-excerpt">Баня площадью 50 м² из профилированного бруса 190/140 в Томске...</div></div></div>
+          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#d8e8d2;padding:0;overflow:hidden"><img src="https://gkrus-stroy.ru/upload/photos/997_3_4_J7ZeaSrLBMG1luXS.jpg" alt="Новость 7" style="width:100%;height:100%;object-fit:cover" loading="lazy" onerror="this.parentNode.style.display='flex';this.parentNode.style.alignItems='center';this.parentNode.style.justifyContent='center';this.remove();this.parentNode.textContent='🌲 Объект 2020'"></div><div class="news-body"><div class="news-date">08.03.2020</div><div class="news-title-t">Завершили строительство дома 130 м² из оцилиндрованного бревна</div><div class="news-excerpt">Дом площадью 130 м² из оцилиндрованного бревна диаметром 24 см в Новосибирске...</div></div></div>
+          <div class="news-card" style="cursor:default"><div class="news-img-ph" style="background:#cdd9e0;padding:0;overflow:hidden"><img src="https://gkrus-stroy.ru/upload/photos/676_3_4_04pVt8unlZUFaS5E.jpg" alt="" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div><div class="news-body"><div class="news-date">20.03.2019</div><div class="news-title-t">Завершаем строительство дома из оцилиндрованного бревна Д280мм в пос. Кольцово</div><div class="news-excerpt">Строительство дома из бревна диаметром 280 мм в Новосибирской области...</div></div></div>
         </div>
       </div>
       <div class="news-nav">
@@ -954,11 +980,11 @@ input,select,textarea{font-family:inherit}
         </div>
         <div class="slider-wrap" id="projSliderWrap">
           <div class="slider-track" id="projSliderTrack">
-            <div class="slide" style="background:#cdd8c8">🏠<div>Фасад 1</div></div>
-            <div class="slide" style="background:#c8d0cd">🏠<div>Фасад 2</div></div>
-            <div class="slide" style="background:#d0d8c8">🏠<div>Вид сбоку</div></div>
-            <div class="slide" style="background:#c8d4d4">📐<div>Планировка 1 эт.</div></div>
-            <div class="slide" style="background:#cdd4d0">📐<div>Планировка 2 эт.</div></div>
+            <div class="slide" style="background:#cdd8c8" id="ps0"><div style="font-size:22px">🏠</div><div>Фасад 1</div></div>
+            <div class="slide" style="background:#c8d0cd" id="ps1"><div style="font-size:22px">🏠</div><div>Фасад 2</div></div>
+            <div class="slide" style="background:#d0d8c8" id="ps2"><div style="font-size:22px">🏠</div><div>Вид сбоку</div></div>
+            <div class="slide" style="background:#c8d4d4" id="ps3"><div style="font-size:22px">📐</div><div>Планировка 1 эт.</div></div>
+            <div class="slide" style="background:#cdd4d0" id="ps4"><div style="font-size:22px">📐</div><div>Планировка 2 эт.</div></div>
           </div>
           <button class="sl-prev" onclick="projGo(-1)">&#8592;</button>
           <button class="sl-next" onclick="projGo(1)">&#8594;</button>
@@ -1599,6 +1625,87 @@ const CARD_COLORS=[
 ];
 function cardColor(i){return CARD_COLORS[i%CARD_COLORS.length]}
  
+/* ===== PROJECT IMAGE URLS ===== */
+const PROJ_IMGS = {
+  'd1': 'https://gkrus-stroy.ru/upload/photos/220_product_yOkFOrjJmt2bF3Fp.jpg',
+  'd2': 'https://gkrus-stroy.ru/upload/photos/221_product_PJqMKm0Wjh32Lmb4.jpg',
+  'd3': 'https://gkrus-stroy.ru/upload/photos/222_product_KzLVNABMrMXr86Mr.jpg',
+  'd4': 'https://gkrus-stroy.ru/upload/photos/223_3_4_',
+  'd5': 'https://gkrus-stroy.ru/upload/photos/224_3_4_',
+  'd6': 'https://gkrus-stroy.ru/upload/photos/225_3_4_',
+  'd7': 'https://gkrus-stroy.ru/upload/photos/226_3_4_',
+  'd8': 'https://gkrus-stroy.ru/upload/photos/227_3_4_',
+  'd9': 'https://gkrus-stroy.ru/upload/photos/228_3_4_',
+  'd10': 'https://gkrus-stroy.ru/upload/photos/229_3_4_',
+  'd11': 'https://gkrus-stroy.ru/upload/photos/230_3_4_',
+  'd12': 'https://gkrus-stroy.ru/upload/photos/231_3_4_',
+  'd13': 'https://gkrus-stroy.ru/upload/photos/232_3_4_',
+  'd14': 'https://gkrus-stroy.ru/upload/photos/233_3_4_',
+  'd15': 'https://gkrus-stroy.ru/upload/photos/234_3_4_',
+  'd16': 'https://gkrus-stroy.ru/upload/photos/235_3_4_',
+  'd17': 'https://gkrus-stroy.ru/upload/photos/236_3_4_',
+  'd18': 'https://gkrus-stroy.ru/upload/photos/237_3_4_',
+  'd19': 'https://gkrus-stroy.ru/upload/photos/238_3_4_',
+  'd20': 'https://gkrus-stroy.ru/upload/photos/239_3_4_',
+  'd21': 'https://gkrus-stroy.ru/upload/photos/240_3_4_',
+  'd22': 'https://gkrus-stroy.ru/upload/photos/241_3_4_',
+  'd23': 'https://gkrus-stroy.ru/upload/photos/242_3_4_',
+  'd24': 'https://gkrus-stroy.ru/upload/photos/243_3_4_',
+  'd25': 'https://gkrus-stroy.ru/upload/photos/244_3_4_',
+  'd26': 'https://gkrus-stroy.ru/upload/photos/245_3_4_',
+  'd27': 'https://gkrus-stroy.ru/upload/photos/246_3_4_',
+  'd28': 'https://gkrus-stroy.ru/upload/photos/247_3_4_',
+  'd29': 'https://gkrus-stroy.ru/upload/photos/248_3_4_',
+  'd30': 'https://gkrus-stroy.ru/upload/photos/249_3_4_',
+  'd31': 'https://gkrus-stroy.ru/upload/photos/250_3_4_',
+  'd32': 'https://gkrus-stroy.ru/upload/photos/251_3_4_',
+  'd33': 'https://gkrus-stroy.ru/upload/photos/252_3_4_',
+  'd34': 'https://gkrus-stroy.ru/upload/photos/253_3_4_',
+  'd35': 'https://gkrus-stroy.ru/upload/photos/254_3_4_',
+  'b1': 'https://gkrus-stroy.ru/upload/photos/256_product_0SuGiCKnVoJm27Ak.jpg',
+  'b2': 'https://gkrus-stroy.ru/upload/photos/257_3_4_',
+  'b3': 'https://gkrus-stroy.ru/upload/photos/258_3_4_',
+  'b4': 'https://gkrus-stroy.ru/upload/photos/259_3_4_',
+  'b5': 'https://gkrus-stroy.ru/upload/photos/260_3_4_',
+  'b6': 'https://gkrus-stroy.ru/upload/photos/261_3_4_',
+  'b7': 'https://gkrus-stroy.ru/upload/photos/262_3_4_',
+  'b8': 'https://gkrus-stroy.ru/upload/photos/263_3_4_',
+  'b9': 'https://gkrus-stroy.ru/upload/photos/264_3_4_',
+  'b10': 'https://gkrus-stroy.ru/upload/photos/265_3_4_',
+  'b11': 'https://gkrus-stroy.ru/upload/photos/266_3_4_',
+  'b12': 'https://gkrus-stroy.ru/upload/photos/267_3_4_',
+  'b13': 'https://gkrus-stroy.ru/upload/photos/268_3_4_',
+  'b14': 'https://gkrus-stroy.ru/upload/photos/269_3_4_',
+  'b15': 'https://gkrus-stroy.ru/upload/photos/270_3_4_',
+  'b16': 'https://gkrus-stroy.ru/upload/photos/271_3_4_',
+  'b17': 'https://gkrus-stroy.ru/upload/photos/272_3_4_',
+  'b18': 'https://gkrus-stroy.ru/upload/photos/273_3_4_',
+  'b19': 'https://gkrus-stroy.ru/upload/photos/274_3_4_',
+  'b20': 'https://gkrus-stroy.ru/upload/photos/275_3_4_',
+  'b21': 'https://gkrus-stroy.ru/upload/photos/276_3_4_',
+  'b22': 'https://gkrus-stroy.ru/upload/photos/277_3_4_',
+  'b23': 'https://gkrus-stroy.ru/upload/photos/278_3_4_',
+  'b24': 'https://gkrus-stroy.ru/upload/photos/279_3_4_',
+  'b25': 'https://gkrus-stroy.ru/upload/photos/280_3_4_',
+  'b26': 'https://gkrus-stroy.ru/upload/photos/281_3_4_',
+  'b27': 'https://gkrus-stroy.ru/upload/photos/282_3_4_',
+  'b28': 'https://gkrus-stroy.ru/upload/photos/283_3_4_',
+  'b29': 'https://gkrus-stroy.ru/upload/photos/284_3_4_',
+  'b30': 'https://gkrus-stroy.ru/upload/photos/285_3_4_',
+  'b31': 'https://gkrus-stroy.ru/upload/photos/286_3_4_',
+  'b32': 'https://gkrus-stroy.ru/upload/photos/287_3_4_',
+  'b33': 'https://gkrus-stroy.ru/upload/photos/288_3_4_',
+  'b34': 'https://gkrus-stroy.ru/upload/photos/289_3_4_',
+  'b35': 'https://gkrus-stroy.ru/upload/photos/290_3_4_',
+};
+ 
+function projImg(id){
+  const url = PROJ_IMGS[id];
+  if(!url) return '';
+  return url;
+}
+ 
+ 
 /* ===== ROUTING ===== */
 let currentPage='home';
 let catTabState='';
@@ -1672,7 +1779,10 @@ function renderPopGrid(filter){
   else sub=PROJECTS.slice(0,4);
   grid.innerHTML=sub.map((p,i)=>`
     <div class="proj-card" onclick="openProject('${p.id}')">
-      <div class="proj-img" style="background:${cardColor(i)}">🏠<div style="font-size:11px;color:#555">${p.name}</div></div>
+      <div class="proj-img" style="background:${cardColor(i)}">${projImg(p.id)
+        ? `<img src="${projImg(p.id)}" alt="${p.name}" loading="lazy" onerror="this.parentNode.innerHTML='<div style=\"display:flex;align-items:center;justify-content:center;height:100%;font-size:22px\">🏠</div>'">`
+        : '<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:22px">🏠</div>'
+      }</div>
       <div class="proj-body">
         <div class="proj-name">${p.name}</div>
         <div class="proj-meta"><span>📐 ${p.sq} м²</span><span>🏠 ${p.fl} эт.</span></div>
@@ -1801,7 +1911,10 @@ function renderCatGrid(){
   }
   grid.innerHTML = res.map((p,i) => `
     <div class="cat-card" onclick="openProject('${p.id}')">
-      <div class="cat-img" style="background:${cardColor(i)}">🏠<div style="font-size:11px;color:#555;margin-top:3px">${p.name}</div></div>
+      <div class="cat-img" style="background:${cardColor(i)}">${projImg(p.id)
+        ? `<img src="${projImg(p.id)}" alt="${p.name}" loading="lazy" onerror="this.parentNode.innerHTML='<div style=\"display:flex;align-items:center;justify-content:center;height:100%;font-size:22px\">🏠</div>'">`
+        : '<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:22px">🏠</div>'
+      }</div>
       <div class="cat-body">
         <div class="cat-name">${p.name}</div>
         <div class="cat-meta">
@@ -1830,6 +1943,24 @@ function openProject(id){
   // Reset slider & tabs
   projIdx=0;
   document.getElementById('projSliderTrack').style.transform='translateX(0)';
+  // Обновить картинки слайдера
+  const baseImg = projImg(p.id);
+  const slides = document.querySelectorAll('#projSliderTrack .slide');
+  slides.forEach((sl, si) => {
+    if(baseImg && !baseImg.endsWith('_')) {
+      // Конкретный URL — только первый слайд
+      if(si === 0) {
+        sl.innerHTML = `<img src="${baseImg}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover">`;
+      } else {
+        sl.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;height:100%;font-size:14px;color:var(--green-dark)">${si<3?'🏠':'📐'}<div>${si<3?'Фасад '+(si+1):'si===3?"Планировка 1 эт.":"Планировка 2 эт.""}</div></div>`;
+      }
+    } else if(baseImg) {
+      // Паттерн без хэша — пробуем загрузить картинку
+      const num = baseImg.split('/').pop().split('_')[0];
+      const img = new Image();
+      img.onload = () => { sl.innerHTML = `<img src="${baseImg}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover">`; };
+    }
+  });
   document.querySelectorAll('#projDots .sdot').forEach((d,i)=>d.classList.toggle('active',i===0));
   document.querySelectorAll('#projThumbs .thumb').forEach((d,i)=>d.classList.toggle('active',i===0));
   document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',i===0));
@@ -1860,43 +1991,93 @@ function tabSwitch(id,btn){
 }
  
 /* ===== GALLERY ===== */
-const GAL_CATS=['doma','doma','doma','doma','bani','bani','bani','bani','prochee','prochee',
-  'doma','doma','doma','doma','bani','bani','bani','bani','doma','doma',
-  'doma','bani','bani','prochee','doma','doma','bani','bani','doma','doma',
-  'bani','doma','doma','bani','bani','doma','prochee','doma','bani','bani',
-  'doma','doma','bani','bani','doma','doma','doma','bani','doma','bani',
-  'doma','bani','bani','prochee'];
+const GAL_DATA = [
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_5mbHciQULs4GqpJW.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/997_3_4_aYdn8RKjFePZpI07.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/997_3_4_qpYtKppzKE07441M.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/997_3_4_LR2hiRYDClSOabLi.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/997_3_4_HhxETGUZJFSlDYMv.jpg', cat:'bani'},
+  {url:'https://gkrus-stroy.ru/upload/photos/997_3_4_rDi8u3KD0y91drly.jpg', cat:'bani'},
+  {url:'https://gkrus-stroy.ru/upload/photos/997_3_4_2MihkNGxaSJ6LG9w.jpg', cat:'bani'},
+  {url:'https://gkrus-stroy.ru/upload/photos/997_3_4_TuXCKLgvr7leuQTa.jpg', cat:'bani'},
+  {url:'https://gkrus-stroy.ru/upload/photos/997_3_4_OLwA85DSCb7C6O13.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/997_3_4_Lom0XfOBGNAsDWO4.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/997_3_4_uxSb5tD3HAetR7tq.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/997_3_4_t6rVmBr65vg10fKJ.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/997_3_4_J7ZeaSrLBMG1luXS.jpg', cat:'prochee'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_ZXs2Ei4r9PyMa6x9.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_gu4dpobSQu0ugF1G.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_H9lMmNkqgq99maMe.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_MigZGLgd2ObOigss.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_u8QYnoqTnSlu1H37.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_9Vwn2Wkd2S3Bd6HP.jpg', cat:'bani'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_BtNudSX5k89OxnLa.jpg', cat:'bani'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_cMoCvoR0wwg00jRy.jpg', cat:'bani'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_fT3DvoscpSN1lhps.jpg', cat:'bani'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_YcZV9hdQrUPBnctm.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_GCgkaHyJomuWDeY9.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_WiPBwkKjsSTD2Ryn.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_jtWczjLzBhIIT8xS.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_f3TAnrp1yemMiy9k.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_Ry5hdfYGZWJFTAlD.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_YyThVANy8IOUTj1C.jpg', cat:'bani'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_GjNgtKmw22pZyNQh.jpg', cat:'bani'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_QOLOS7j26lA7gcLB.jpg', cat:'prochee'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_04pVt8unlZUFaS5E.jpg', cat:'prochee'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_6sUdhqWWSXQ1upvD.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_suQf4rtJRd87z8do.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_URBiLRwXCltD6neX.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_V7IereaJbtbK2jyc.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_rnLnnzMqDEaM9Xbo.jpg', cat:'bani'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_5LxKQK1iyGUrHSXa.jpg', cat:'bani'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_7bXUm7k8tCoyaSE4.jpg', cat:'bani'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_UGdtYV8wHhvnwvHx.jpg', cat:'bani'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_ghYgOfeN8x8oSdxw.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_vq3GCzeRqf7bP7zN.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_vNbVmPEqrAskiwSs.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_RBdJVmrEYOI8g78J.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_QfT14iLdnwYFjVcF.jpg', cat:'bani'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_fanQeSdqrtRsXuVj.jpg', cat:'bani'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_03sGTQAeoR7xCYnp.jpg', cat:'prochee'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_wdXA5mXKPJZtcGGU.jpg', cat:'prochee'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_1WmAaHxLUOPgC27Z.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_3q2Qi8roKvdiT7Uy.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_SUp7SOrPr1fhr5R8.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_4rlPAbiGLTp8bL3G.jpg', cat:'doma'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_bf25y3BdsA4WjGvL.jpg', cat:'bani'},
+  {url:'https://gkrus-stroy.ru/upload/photos/676_3_4_ipvOE3L5kOSVbMUR.jpg', cat:'bani'},
+];
+ 
 const GAL_COLORS=['#d8e8d2','#cdd9e0','#e0d8cc','#d8ddd2','#cce0e0','#e0d4cc','#d0dce8','#d8d4c8'];
 let galCat='all', galVisible=20;
  
 function initGallery(cat){
-  galCat=cat;
-  galVisible=20;
+  galCat = cat||'all';
+  galVisible = 20;
   document.querySelectorAll('.gal-fbtn').forEach(b=>{
-    const oc=b.getAttribute('onclick')||'';
-    b.classList.toggle('active',oc.includes(`'${cat}'`));
+    const oc = b.getAttribute('onclick')||'';
+    b.classList.toggle('active', oc.includes("'"+galCat+"'"));
   });
   renderGallery();
 }
 function galFilter(cat,btn){
-  galCat=cat; galVisible=20;
+  galCat = cat; galVisible = 20;
   document.querySelectorAll('.gal-fbtn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   renderGallery();
 }
 function renderGallery(){
-  const all=GAL_CATS.map((c,i)=>({i,c}));
-  const filtered=galCat==='all'?all:all.filter(x=>x.c===galCat);
-  const shown=filtered.slice(0,galVisible);
-  const grid=document.getElementById('galleryGrid');
-  const lab={doma:'🏠 Дом',bani:'🛁 Баня',prochee:'🏗️ Прочее'};
-  grid.innerHTML=shown.map(({i,c})=>
+  const all = GAL_DATA.map((d,i) => ({...d, i}));
+  const filtered = galCat==='all' ? all : all.filter(x=>x.cat===galCat);
+  const shown = filtered.slice(0, galVisible);
+  const grid = document.getElementById('galleryGrid');
+  grid.innerHTML = shown.map(({url, cat, i}) =>
     `<div class="gal-item" style="background:${GAL_COLORS[i%GAL_COLORS.length]}">
-      <div>${lab[c]||'📸'}</div>
-      <div style="font-size:11px;font-weight:400;color:var(--gray-text)">Объект #${i+1}</div>
+      <img src="${url}" alt="Объект ${i+1}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"
+        onerror="this.style.display='none';this.parentNode.innerHTML+='<div style=\"display:flex;align-items:center;justify-content:center;height:100%;font-size:24px\">${cat==='bani'?'🛁':cat==='prochee'?'🏗️':'🏠'}</div>'">
     </div>`).join('');
-  const btn=document.getElementById('showMoreBtn');
-  btn.style.display=shown.length<filtered.length?'block':'none';
+  const btn = document.getElementById('showMoreBtn');
+  btn.style.display = shown.length < filtered.length ? 'block' : 'none';
 }
 function galShowMore(){galVisible+=16;renderGallery()}
  
